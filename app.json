@@ -1,0 +1,17 @@
+{
+  "name": "eknjige",
+  "displayName": "eknjige",
+  "expo": {
+    "name": "eknjige",
+    "slug": "eknjige",
+    "version": "1.0.0",
+    "platforms": [
+      "ios",
+      "android",
+      "web"
+    ],
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
