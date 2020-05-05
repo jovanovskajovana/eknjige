@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "1088631484328",
+    "firebase_url": "https://eknjige-92c0c.firebaseio.com",
+    "project_id": "eknjige-92c0c",
+    "storage_bucket": "eknjige-92c0c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1088631484328:android:11d3f3fe7b96995468f79d",
+        "android_client_info": {
+          "package_name": "com.eknjige"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1088631484328-1u0acgaqk3blhep0lmbqqck6pr50cvjb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA0HRwSzloLnw8-BtbArfhE1uKMlZ0G7j0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1088631484328-1u0acgaqk3blhep0lmbqqck6pr50cvjb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
