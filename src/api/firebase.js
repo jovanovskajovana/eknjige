@@ -22,6 +22,8 @@ class Firebase {
 
   getAuthtUser = (authUser) => this.auth.onAuthStateChanged(authUser)
 
+  getCurrentUser = (authUser) => this.auth.currentUser
+
   resetPassword = (email) => this.auth.sendPasswordResetEmail(email)
 
   updatePassword = (password) => this.auth.currentUser.updatePassword(password)
