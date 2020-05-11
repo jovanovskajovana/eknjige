@@ -1,11 +1,15 @@
 import React from 'react'
 
-import { ViewLayout, TextLayout } from '../styles/ViewLayout'
+import NavigatinHeader from '../components/NavigationHeader'
+import { ScreenLayout, ViewLayout, TextLayout } from '../styles/ViewLayout'
 
 const BookDetailsScreen = () => (
-  <ViewLayout>
-    <TextLayout>BookDetails</TextLayout>
-  </ViewLayout>
+  <ScreenLayout>
+    <NavigatinHeader backBtn />
+    <ViewLayout>
+      <TextLayout>BookDetails</TextLayout>
+    </ViewLayout>
+  </ScreenLayout>
 )
 
 export default BookDetailsScreen

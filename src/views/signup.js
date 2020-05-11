@@ -3,7 +3,7 @@ import { TextInput, Button } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 
 import firebase from '../api/firebase'
-import { ViewLayout, TextLayout } from '../styles/ViewLayout'
+import { ScreenLayout, TextLayout } from '../styles/ViewLayout'
 
 const SignUpScreen = () => {
   const navigation = useNavigation()
@@ -14,7 +14,7 @@ const SignUpScreen = () => {
   const [password, setPassword] = useState('')
   const [errorMessage, setErrorMessage] = useState(null)
 
-  // const isInvalid = password === '' || email === '' || username === ''
+  const isInvalid = password === '' || email === '' || name === '' || surname === ''
 
   const handleSignUp = () => {
     firebase
@@ -34,18 +34,12 @@ const SignUpScreen = () => {
   }
 
   return (
-    <ViewLayout>
+    <ScreenLayout>
       <TextLayout>Sign Up</TextLayout>
       {errorMessage && <TextLayout>{errorMessage}</TextLayout>}
-      <TextInput
-        placeholder="Name"
-        // autoCapitalize="none"
-        value={name}
-        onChangeText={(text) => setName(text)}
-      />
+      <TextInput placeholder="Name" value={name} onChangeText={(text) => setName(text)} />
       <TextInput
         placeholder="Surname"
-        autoCapitalize="none"
         value={surname}
         onChangeText={(text) => setSurname(text)}
       />
@@ -58,12 +52,16 @@ const SignUpScreen = () => {
       <TextInput
         placeholder="Password"
         autoCapitalize="none"
+        secureTextEntry={true}
         value={password}
         onChangeText={(text) => setPassword(text)}
       />
-      <Button title="Submit" onPress={handleSignUp} />
-      <Button title="Already have an account? Login" onPress={() => navigation.navigate('Login')} />
-    </ViewLayout>
+      <Button disabled={isInvalid} title="Submit" onPress={handleSignUp} />
+      <Button
+        title="Already have an account? Login"
+        onPress={() => navigation.navigate('Login')}
+      />
+    </ScreenLayout>
   )
 }
 

@@ -1,11 +1,11 @@
 import React from 'react'
 
-import { ViewLayout, TextLayout } from '../styles/ViewLayout'
+import { ScreenLayout, TextLayout } from '../styles/ViewLayout'
 
 const PasswordResetScreen = () => (
-  <ViewLayout>
+  <ScreenLayout>
     <TextLayout>Password Change</TextLayout>
-  </ViewLayout>
+  </ScreenLayout>
 )
 
 export default PasswordResetScreen

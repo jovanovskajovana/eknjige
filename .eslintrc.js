@@ -23,7 +23,7 @@ module.exports = {
       {
         'trailingComma': 'es5',
         'singleQuote': true,
-        'printWidth': 100,
+        'printWidth': 90,
         'endOfLine': 'lf',
         'semi': false,
         'tabWidth': 2,

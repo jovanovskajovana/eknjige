@@ -1,11 +1,15 @@
 import React from 'react'
 
-import { ViewLayout, TextLayout } from '../styles/ViewLayout'
+import NavigatinHeader from '../components/NavigationHeader'
+import { ScreenLayout, TextLayout, ViewLayout } from '../styles/ViewLayout'
 
 const WishlistScreen = () => (
-  <ViewLayout>
-    <TextLayout>Wishlist</TextLayout>
-  </ViewLayout>
+  <ScreenLayout>
+    <NavigatinHeader profileBtn />
+    <ViewLayout>
+      <TextLayout>Wishlist</TextLayout>
+    </ViewLayout>
+  </ScreenLayout>
 )
 
 export default WishlistScreen

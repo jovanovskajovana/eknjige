@@ -1,27 +1,32 @@
 import React, { useState, useEffect } from 'react'
-import { Button } from 'react-native'
-
-import { ViewLayout, TextLayout } from '../styles/ViewLayout'
+import { useNavigation } from '@react-navigation/native'
 
 import firebase from '../api/firebase'
+import NavigatinHeader from '../components/NavigationHeader'
+import { ScreenLayout, ViewLayout, TextLayout, Link } from '../styles/ViewLayout'
 
 const HomeScreen = () => {
+  const navigation = useNavigation()
   const [user, setUser] = useState(null)
 
   useEffect(() => {
     setUser(firebase.getCurrentUser)
   }, [])
 
-  const handleLogout = () => {
-    firebase.signOut()
-  }
-
   return (
-    <ViewLayout>
-      <TextLayout>Home</TextLayout>
-      <TextLayout>Hi, {user && user.email}!</TextLayout>
-      <Button title="Log Out" onPress={handleLogout} />
-    </ViewLayout>
+    <ScreenLayout>
+      <NavigatinHeader profileBtn />
+      <ViewLayout>
+        {!user?.displayName ? (
+          <>
+            <TextLayout>Welcome! Let's update your</TextLayout>
+            <Link onPress={() => navigation.navigate('Profile')}>profile</Link>
+          </>
+        ) : (
+          <TextLayout>Hi, {user?.displayName}!</TextLayout>
+        )}
+      </ViewLayout>
+    </ScreenLayout>
   )
 }
 

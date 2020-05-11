@@ -1,11 +1,15 @@
 import React from 'react'
 
-import { ViewLayout, TextLayout } from '../styles/ViewLayout'
+import NavigatinHeader from '../components/NavigationHeader'
+import { ScreenLayout, ViewLayout, TextLayout } from '../styles/ViewLayout'
 
 const LibraryScreen = () => (
-  <ViewLayout>
-    <TextLayout>Library</TextLayout>
-  </ViewLayout>
+  <ScreenLayout>
+    <NavigatinHeader profileBtn />
+    <ViewLayout>
+      <TextLayout>Library</TextLayout>
+    </ViewLayout>
+  </ScreenLayout>
 )
 
 export default LibraryScreen

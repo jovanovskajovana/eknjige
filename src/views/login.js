@@ -3,7 +3,7 @@ import { TextInput, Button } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 
 import firebase from '../api/firebase'
-import { ViewLayout, TextLayout } from '../styles/ViewLayout'
+import { ScreenLayout, TextLayout } from '../styles/ViewLayout'
 
 const LoginScreen = () => {
   const navigation = useNavigation()
@@ -12,7 +12,7 @@ const LoginScreen = () => {
   const [password, setPassword] = useState('')
   const [errorMessage, setErrorMessage] = useState(null)
 
-  // const isInvalid = password === '' || email === '' || username === ''
+  const isInvalid = password === '' || email === ''
 
   const handleLogin = () => {
     firebase
@@ -24,7 +24,7 @@ const LoginScreen = () => {
   }
 
   return (
-    <ViewLayout>
+    <ScreenLayout>
       <TextLayout>Login</TextLayout>
       {errorMessage && <TextLayout>{errorMessage}</TextLayout>}
       <TextInput
@@ -36,15 +36,16 @@ const LoginScreen = () => {
       <TextInput
         placeholder="Password"
         autoCapitalize="none"
+        secureTextEntry={true}
         value={password}
         onChangeText={(text) => setPassword(text)}
       />
-      <Button title="Submit" onPress={handleLogin} />
+      <Button disabled={isInvalid} title="Submit" onPress={handleLogin} />
       <Button
         title="Don't have an account? Sign Up"
         onPress={() => navigation.navigate('SignUp')}
       />
-    </ViewLayout>
+    </ScreenLayout>
   )
 }
 
