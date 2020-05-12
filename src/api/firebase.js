@@ -18,9 +18,11 @@ class Firebase {
   signInWithSocialAccount = (provider) =>
     this.auth.signInWithPopup(new app.auth[`${provider}AuthProvider`]())
 
+  sendEmailVerification = () => this.auth.currentUser.sendEmailVerification()
+
   signOut = () => this.auth.signOut()
 
-  getAuthtUser = (authUser) => this.auth.onAuthStateChanged(authUser)
+  getAuthState = (authUser) => this.auth.onAuthStateChanged(authUser)
 
   getCurrentUser = () => this.auth.currentUser
 
@@ -30,9 +32,25 @@ class Firebase {
 
   // *** Db API ***
 
-  getBooks = () => this.db.collection('Books').get()
+  addUser = () => this.db.collection('users')
 
-  getBookDetails = (uid) => this.db.collection('Books').doc(uid).get()
+  getUser = (uid) => this.db.collection('users').doc(uid)
+
+  getBooks = () => this.db.collection('books')
+  // Istoto so Query
+  // getBooks = () =>
+  //   this.db
+  //     .collection('Books')
+  //     .get()
+  //     .then((querySnapshot) => {
+  //       console.log('Total users: ', querySnapshot.size)
+  //       querySnapshot.forEach((documentSnapshot) => {
+  //         console.log('User ID: ', documentSnapshot.id, documentSnapshot.data())
+  //       })
+  //     })
+
+  getBookDetails = (uid) => this.db.doc(`books/${uid}`).onSnapshot()
+  // getBookDetails = (uid) => this.db.collection('Books').doc(uid).onSnapshot() isto kako User
 }
 
 const api = new Firebase()

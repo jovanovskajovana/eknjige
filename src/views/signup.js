@@ -1,12 +1,14 @@
 import React, { useState } from 'react'
 import { TextInput, Button } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
+import { useSafeArea } from 'react-native-safe-area-context'
 
 import firebase from '../api/firebase'
 import { ScreenLayout, TextLayout } from '../styles/ViewLayout'
 
 const SignUpScreen = () => {
   const navigation = useNavigation()
+  const insets = useSafeArea()
 
   const [name, setName] = useState('')
   const [surname, setSurname] = useState('')
@@ -19,6 +21,10 @@ const SignUpScreen = () => {
   const handleSignUp = () => {
     firebase
       .createUserWithEmailAndPassword(email, password)
+      .then((authUser) =>
+        firebase.getUser(authUser.user.uid).set({ name, surname, email })
+      )
+      .then(() => firebase.sendEmailVerification())
       .then(() => navigation.navigate('Home'))
       .catch((error) => {
         if (error.code === 'auth/email-already-in-use') {
@@ -34,7 +40,7 @@ const SignUpScreen = () => {
   }
 
   return (
-    <ScreenLayout>
+    <ScreenLayout paddingTop={insets.top + 20}>
       <TextLayout>Sign Up</TextLayout>
       {errorMessage && <TextLayout>{errorMessage}</TextLayout>}
       <TextInput placeholder="Name" value={name} onChangeText={(text) => setName(text)} />

@@ -13,20 +13,17 @@ const App = () => {
   const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
-    firebase.getAuthtUser((authUser) => {
+    const listener = firebase.getAuthState((authUser) => {
       setUser(authUser)
       if (isLoading) setIsLoading(false)
     })
-  }, [])
-
-  // if (isLoading) {
-  //   return <Loader />
-  // }
+    return () => listener()
+  })
 
   return (
     <ThemeProvider theme={theme}>
       <SafeAreaProvider>
-        <NavigationMain user={user} />
+        {isLoading ? <Loader /> : <NavigationMain user={user} />}
       </SafeAreaProvider>
     </ThemeProvider>
   )

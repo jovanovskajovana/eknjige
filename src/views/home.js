@@ -1,30 +1,40 @@
 import React, { useState, useEffect } from 'react'
-import { useNavigation } from '@react-navigation/native'
 
 import firebase from '../api/firebase'
 import NavigatinHeader from '../components/NavigationHeader'
 import { ScreenLayout, ViewLayout, TextLayout, Link } from '../styles/ViewLayout'
 
 const HomeScreen = () => {
-  const navigation = useNavigation()
-  const [user, setUser] = useState(null)
+  const [user, setUser] = useState()
+
+  const [books, setBooks] = useState([])
 
   useEffect(() => {
-    setUser(firebase.getCurrentUser)
-  }, [])
+    const user = firebase.getCurrentUser()
+    if (user) {
+      firebase
+        .getUser(user.uid)
+        .get()
+        .then((querySnapshot) => {
+          setUser(querySnapshot.data())
+        })
+    }
+  })
+
+  // useEffect(() => {
+  //   const unsubscribe = firebase.getBooks().onSnapshot((querySnapshot) => {
+  //     querySnapshot.forEach((documentSnapshot) => {
+  //       setBooks({ ...documentSnapshot.data(), uid: documentSnapshot.id })
+  //     })
+  //   })
+  //   return unsubscribe()
+  // })
 
   return (
     <ScreenLayout>
       <NavigatinHeader profileBtn />
       <ViewLayout>
-        {!user?.displayName ? (
-          <>
-            <TextLayout>Welcome! Let's update your</TextLayout>
-            <Link onPress={() => navigation.navigate('Profile')}>profile</Link>
-          </>
-        ) : (
-          <TextLayout>Hi, {user?.displayName}!</TextLayout>
-        )}
+        <TextLayout>Hi, {user?.name}!</TextLayout>
       </ViewLayout>
     </ScreenLayout>
   )

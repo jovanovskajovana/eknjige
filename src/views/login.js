@@ -1,12 +1,14 @@
 import React, { useState } from 'react'
 import { TextInput, Button } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
+import { useSafeArea } from 'react-native-safe-area-context'
 
 import firebase from '../api/firebase'
 import { ScreenLayout, TextLayout } from '../styles/ViewLayout'
 
 const LoginScreen = () => {
   const navigation = useNavigation()
+  const insets = useSafeArea()
 
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -24,7 +26,7 @@ const LoginScreen = () => {
   }
 
   return (
-    <ScreenLayout>
+    <ScreenLayout paddingTop={insets.top + 20}>
       <TextLayout>Login</TextLayout>
       {errorMessage && <TextLayout>{errorMessage}</TextLayout>}
       <TextInput

@@ -6,11 +6,19 @@ import { ScreenLayout, ViewLayout, TextLayout } from '../styles/ViewLayout'
 import firebase from '../api/firebase'
 
 const ProfileScreen = () => {
-  const [user, setUser] = useState(null)
+  const [user, setUser] = useState()
 
   useEffect(() => {
-    setUser(firebase.getCurrentUser)
-  }, [])
+    const user = firebase.getCurrentUser()
+    if (user) {
+      firebase
+        .getUser(user.uid)
+        .get()
+        .then((querySnapshot) => {
+          setUser(querySnapshot.data())
+        })
+    }
+  })
 
   const handleLogout = () => {
     firebase.signOut()
@@ -21,7 +29,9 @@ const ProfileScreen = () => {
       <NavigatinHeader backBtn />
       <ViewLayout>
         <TextLayout>Profile</TextLayout>
-        <TextLayout>{user?.displayName}</TextLayout>
+        <TextLayout>
+          {user?.name} {user?.surname}
+        </TextLayout>
         <TextLayout>{user?.email}</TextLayout>
         <Button title="Log Out" onPress={handleLogout} />
       </ViewLayout>
