@@ -24,17 +24,24 @@ class Firebase {
 
   getAuthState = (authUser) => this.auth.onAuthStateChanged(authUser)
 
-  getCurrentUser = () => this.auth.currentUser
-
   resetPassword = (email) => this.auth.sendPasswordResetEmail(email)
 
   updatePassword = (password) => this.auth.currentUser.updatePassword(password)
 
   // *** Db API ***
 
-  addUser = () => this.db.collection('users')
-
   getUser = (uid) => this.db.collection('users').doc(uid)
+
+  getCurrentUser = (userCallback) =>
+    this.getAuthState((authUser) => {
+      if (authUser) {
+        this.getUser(authUser.uid)
+          .get()
+          .then((querySnapshot) => {
+            userCallback(querySnapshot.data())
+          })
+      }
+    })
 
   getBooks = () => this.db.collection('books')
   // Istoto so Query
