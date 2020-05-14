@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { ActivityIndicator, FlatList, View, Text } from 'react-native'
 
 import firebase from '../api/firebase'
 import NavigatinHeader from '../components/NavigationHeader'
@@ -6,40 +7,40 @@ import Loader from '../components/Loader'
 import { ScreenLayout, ViewLayout, TextLayout, Link } from '../styles/ViewLayout'
 
 const HomeScreen = () => {
-  const [user, setUser] = useState()
-  const [isLoading, setIsLoading] = useState(true)
-
+  const [user, setUser] = useState(null)
   const [books, setBooks] = useState([])
+  const [isLoading, setIsLoading] = useState(true)
+  const [error, setError] = useState(true)
 
   useEffect(() => {
     const listener = firebase.getCurrentUser((authUser) => {
       setUser(authUser)
-      if (isLoading) setIsLoading(false)
+      setIsLoading(false)
     })
     return () => listener()
   }, [])
 
-  // useEffect(() => {
-  //   console.log(`there is ${authUser}`)
-  //   // const user = firebase.getCurrentUser()
-  //   // if (user) {
-  //   //   firebase
-  //   //     .getUser(user.uid)
-  //   //     .get()
-  //   //     .then((querySnapshot) => {
-  //   //       setUser(querySnapshot.data())
-  //   //     })
-  //   // }
-  // }, [])
+  useEffect(() => {
+    const listener = firebase.getBooks().onSnapshot(
+      (querySnapshot) => {
+        const books = []
 
-  // useEffect(() => {
-  //   const unsubscribe = firebase.getBooks().onSnapshot((querySnapshot) => {
-  //     querySnapshot.forEach((documentSnapshot) => {
-  //       setBooks({ ...documentSnapshot.data(), uid: documentSnapshot.id })
-  //     })
-  //   })
-  //   return unsubscribe()
-  // })
+        querySnapshot.forEach((documentSnapshot) => {
+          books.push({
+            ...documentSnapshot.data(),
+            id: documentSnapshot.id,
+          })
+
+          setBooks(books)
+          setIsLoading(false)
+        })
+      },
+      (error) => {
+        setError(error)
+      }
+    )
+    return () => listener()
+  }, [])
 
   return (
     <ScreenLayout>
@@ -47,9 +48,20 @@ const HomeScreen = () => {
       {isLoading ? (
         <Loader />
       ) : (
-        <ViewLayout>
-          <TextLayout>Hi, {user?.name}!</TextLayout>
-        </ViewLayout>
+        <>
+          <ViewLayout>
+            <TextLayout>Hi, {user?.name}!</TextLayout>
+          </ViewLayout>
+          <FlatList
+            data={books}
+            renderItem={({ item }) => (
+              <ViewLayout>
+                <TextLayout>{item.title}</TextLayout>
+                <TextLayout>{item.author}</TextLayout>
+              </ViewLayout>
+            )}
+          />
+        </>
       )}
     </ScreenLayout>
   )

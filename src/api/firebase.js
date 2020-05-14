@@ -35,29 +35,16 @@ class Firebase {
   getCurrentUser = (userCallback) =>
     this.getAuthState((authUser) => {
       if (authUser) {
-        this.getUser(authUser.uid)
-          .get()
-          .then((querySnapshot) => {
-            userCallback(querySnapshot.data())
-          })
+        this.getUser(authUser.uid).onSnapshot((querySnapshot) => {
+          userCallback(querySnapshot.data())
+        })
       }
     })
 
   getBooks = () => this.db.collection('books')
-  // Istoto so Query
-  // getBooks = () =>
-  //   this.db
-  //     .collection('Books')
-  //     .get()
-  //     .then((querySnapshot) => {
-  //       console.log('Total users: ', querySnapshot.size)
-  //       querySnapshot.forEach((documentSnapshot) => {
-  //         console.log('User ID: ', documentSnapshot.id, documentSnapshot.data())
-  //       })
-  //     })
 
-  getBookDetails = (uid) => this.db.doc(`books/${uid}`).onSnapshot()
-  // getBookDetails = (uid) => this.db.collection('Books').doc(uid).onSnapshot() isto kako User
+  getBookDetails = (uid) => this.db.doc(`books/${uid}`)
+  // getBookDetails = (uid) => this.db.collection('Books').doc(uid) isto kako User
 }
 
 const api = new Firebase()

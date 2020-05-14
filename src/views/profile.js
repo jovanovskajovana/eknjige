@@ -7,7 +7,7 @@ import { ScreenLayout, ViewLayout, TextLayout } from '../styles/ViewLayout'
 import firebase from '../api/firebase'
 
 const ProfileScreen = () => {
-  const [user, setUser] = useState()
+  const [user, setUser] = useState(null)
   const [isLoading, setIsLoading] = useState(true)
 
   const handleLogout = () => {

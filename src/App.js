@@ -15,7 +15,7 @@ const App = () => {
   useEffect(() => {
     const listener = firebase.getAuthState((authUser) => {
       setUser(authUser)
-      if (isLoading) setIsLoading(false)
+      setIsLoading(false)
     })
     return () => listener()
   })
