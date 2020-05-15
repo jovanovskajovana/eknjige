@@ -12,7 +12,6 @@ const ScreenLayout = styled.View`
 `
 
 const ViewLayout = styled.View`
-  background: ${(props) => props.theme.backgroundLight};
   width: 100%;
   margin: auto;
 `

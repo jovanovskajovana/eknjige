@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react'
-import { ActivityIndicator, FlatList, View, Text } from 'react-native'
 
 import firebase from '../api/firebase'
 import NavigatinHeader from '../components/NavigationHeader'
 import Loader from '../components/Loader'
-import { ScreenLayout, ViewLayout, TextLayout, Link } from '../styles/ViewLayout'
+import ListItem from '../components/ListItem'
+import { ScreenLayout, ViewLayout, TextLayout } from '../styles/ViewLayout'
+import { ListLayout } from '../styles/ListLayout'
 
 const HomeScreen = () => {
   const [user, setUser] = useState(null)
@@ -28,7 +29,7 @@ const HomeScreen = () => {
         querySnapshot.forEach((documentSnapshot) => {
           books.push({
             ...documentSnapshot.data(),
-            id: documentSnapshot.id,
+            key: documentSnapshot.id,
           })
 
           setBooks(books)
@@ -42,6 +43,23 @@ const HomeScreen = () => {
     return () => listener()
   }, [])
 
+  handleItemClick = (key) => {
+    console.log(key)
+  }
+
+  // Handle states example
+  // let listToDisplay
+  // if (books === null) {
+  //   listToDisplay = <li>Loading shirts...</li>
+  // } else if (books.length === 0) {
+  //   listToDisplay = <li>No shirts found</li>
+  // } else {
+  //   listToDisplay = books.map((shirt) => {
+  //     return <li key={shirt.key}>{shirt.name}</li>
+  //   })
+  // }
+  // return <ol>{listToDisplay}</ol>
+
   return (
     <ScreenLayout>
       <NavigatinHeader profileBtn />
@@ -52,14 +70,10 @@ const HomeScreen = () => {
           <ViewLayout>
             <TextLayout>Hi, {user?.name}!</TextLayout>
           </ViewLayout>
-          <FlatList
+          <ListLayout
             data={books}
-            renderItem={({ item }) => (
-              <ViewLayout>
-                <TextLayout>{item.title}</TextLayout>
-                <TextLayout>{item.author}</TextLayout>
-              </ViewLayout>
-            )}
+            keyExtractor={(item) => item.key}
+            renderItem={({ item }) => <ListItem item={item} />}
           />
         </>
       )}
