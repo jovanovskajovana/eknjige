@@ -5,13 +5,14 @@ import { ListItemLayout } from '../styles/ListLayout'
 import { TextLayout } from '../styles/ViewLayout'
 
 const CartListItem = ({ item }) => {
-  handleRemove = () => {
-    console.log('clicked')
+  handleRemove = (item) => {
+    console.log(item.key)
   }
   return (
     <ListItemLayout>
       <TextLayout>{item.title}</TextLayout>
-      <Button title="Remove" onPress={() => handleRemove} />
+      <TextLayout>quantity: {item.title}</TextLayout>
+      <Button title="Remove" onPress={() => handleRemove(item)} />
     </ListItemLayout>
   )
 }
