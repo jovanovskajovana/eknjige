@@ -39,7 +39,7 @@ const ListItem = ({ item }) => {
         await AsyncStorage.setItem('cartItems', JSON.stringify(cartItems))
       }
 
-      navigation.navigate('Cart')
+      navigation.navigate('Cart', { refresh: true })
     } catch (error) {
       console.log(error.message)
     }

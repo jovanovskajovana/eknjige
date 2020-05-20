@@ -43,10 +43,6 @@ const HomeScreen = () => {
     return () => listener()
   }, [])
 
-  handleItemClick = (key) => {
-    console.log(key)
-  }
-
   // Handle states example
   // let listToDisplay
   // if (books === null) {
