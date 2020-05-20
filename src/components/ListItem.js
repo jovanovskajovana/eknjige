@@ -3,6 +3,7 @@ import AsyncStorage from '@react-native-community/async-storage'
 import { useNavigation } from '@react-navigation/native'
 import { Button } from 'react-native'
 
+import { formatMoney } from '../utils/moneyFormatter'
 import { ListItemLayout } from '../styles/ListLayout'
 import { TextLayout } from '../styles/ViewLayout'
 
@@ -16,11 +17,11 @@ const ListItem = ({ item }) => {
       const storedData = JSON.parse(storedDataJSON)
 
       if (storedData) {
-        const current = storedData.find((storageItem) => storageItem.key === item.key)
+        const currentItem = storedData.find((storageItem) => storageItem.key === item.key)
 
-        if (current) {
+        if (currentItem) {
           cartItems = storedData.map((storageItem) => {
-            if (storageItem.key === current.key) {
+            if (storageItem.key === currentItem.key) {
               storageItem.quantity += 1
             }
             return storageItem
@@ -55,6 +56,7 @@ const ListItem = ({ item }) => {
     >
       <TextLayout>{item.title}</TextLayout>
       <TextLayout>{item.author}</TextLayout>
+      <TextLayout>{formatMoney(item.price)}</TextLayout>
       <Button title="Buy" onPress={() => addToCart(item)} />
     </ListItemLayout>
   )

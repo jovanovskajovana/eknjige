@@ -4,6 +4,7 @@ import { useNavigation } from '@react-navigation/native'
 import { Button } from 'react-native'
 
 import NavigatinHeader from '../components/NavigationHeader'
+import { calcTotalPrice, formatMoney } from '../utils/moneyFormatter'
 import CartListItem from '../components/CartListItem'
 import { ScreenLayout, ViewLayout, TextLayout } from '../styles/ViewLayout'
 import { ListLayout } from '../styles/ListLayout'
@@ -14,14 +15,15 @@ const CartScreen = ({ route }) => {
   const [cartItems, setCartItems] = useState([])
 
   useEffect(() => {
-    retrieveData()
+    getCartItems()
   }, [triggerRefresh, cartItems])
 
-  const retrieveData = async () => {
+  const getCartItems = async () => {
     try {
       const storedDataJSON = await AsyncStorage.getItem('cartItems')
       const storedData = JSON.parse(storedDataJSON)
-      if (storedDataJSON) {
+
+      if (storedData) {
         setCartItems(storedData)
       }
     } catch (error) {
@@ -39,6 +41,9 @@ const CartScreen = ({ route }) => {
             keyExtractor={(item) => item.key}
             renderItem={({ item }) => <CartListItem item={item} />}
           />
+          <ViewLayout>
+            <TextLayout>Total: {formatMoney(calcTotalPrice(cartItems))}</TextLayout>
+          </ViewLayout>
           <ViewLayout>
             <Button title="Purchase" onPress={() => navigation.navigate('Purchase')} />
           </ViewLayout>
