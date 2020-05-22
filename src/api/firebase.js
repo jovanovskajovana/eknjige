@@ -43,6 +43,32 @@ class Firebase {
 
   getBooks = () => this.db.collection('books')
 
+  setFavoriteBook = (bookKey) =>
+    this.getAuthState((authUser) => {
+      if (authUser) {
+        this.getUser(authUser.uid)
+          .collection('favoriteBooks')
+          .doc(bookKey)
+          .set({ book: this.db.doc(`books/${bookKey}`) })
+          .catch(function (error) {
+            console.error('Error adding document: ', error)
+          })
+      }
+    })
+
+  removeFavoriteBook = (bookKey) =>
+    this.getAuthState((authUser) => {
+      if (authUser) {
+        this.getUser(authUser.uid)
+          .collection('favoriteBooks')
+          .doc(bookKey)
+          .delete()
+          .catch(function (error) {
+            console.error('Error adding document: ', error)
+          })
+      }
+    })
+
   getFavoriteBooks = (booksCallback) =>
     this.getAuthState((authUser) => {
       if (authUser) {

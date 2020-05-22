@@ -5,7 +5,7 @@ import NavigatinHeader from '../components/NavigationHeader'
 import Loader from '../components/Loader'
 import LibraryListItem from '../components/LibraryListItem'
 import { ListLayout } from '../styles/ListLayout'
-import { ScreenLayout } from '../styles/ViewLayout'
+import { ViewLayout, ScreenLayout, TextLayout } from '../styles/ViewLayout'
 
 const LibraryScreen = () => {
   const [books, setBooks] = useState([])
@@ -37,17 +37,26 @@ const LibraryScreen = () => {
     return () => listener()
   }, [])
 
+  if (isLoading)
+    return (
+      <ScreenLayout>
+        <Loader />
+      </ScreenLayout>
+    )
+
   return (
     <ScreenLayout>
       <NavigatinHeader profileBtn />
-      {isLoading ? (
-        <Loader />
-      ) : (
+      {books.length > 0 ? (
         <ListLayout
           data={books}
           keyExtractor={(item) => item.key}
           renderItem={({ item }) => <LibraryListItem item={item} />}
         />
+      ) : (
+        <ViewLayout>
+          <TextLayout>No books purchased yet</TextLayout>
+        </ViewLayout>
       )}
     </ScreenLayout>
   )

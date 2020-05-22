@@ -2,10 +2,9 @@ import React, { useState, useEffect } from 'react'
 
 import firebase from '../api/firebase'
 import NavigatinHeader from '../components/NavigationHeader'
-import Loader from '../components/Loader'
 import ListItem from '../components/ListItem'
 import { ListLayout } from '../styles/ListLayout'
-import { ScreenLayout } from '../styles/ViewLayout'
+import { ViewLayout, ScreenLayout, TextLayout } from '../styles/ViewLayout'
 
 const WishlistScreen = () => {
   const [books, setBooks] = useState([])
@@ -37,17 +36,26 @@ const WishlistScreen = () => {
     return () => listener()
   }, [])
 
+  if (isLoading)
+    return (
+      <ScreenLayout>
+        <Loader />
+      </ScreenLayout>
+    )
+
   return (
     <ScreenLayout>
       <NavigatinHeader profileBtn />
-      {isLoading ? (
-        <Loader />
-      ) : (
+      {books.length > 0 ? (
         <ListLayout
           data={books}
           keyExtractor={(item) => item.key}
           renderItem={({ item }) => <ListItem item={item} />}
         />
+      ) : (
+        <ViewLayout>
+          <TextLayout>No favorite books added</TextLayout>
+        </ViewLayout>
       )}
     </ScreenLayout>
   )
