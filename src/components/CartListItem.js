@@ -11,19 +11,20 @@ const CartListItem = ({ item }) => {
     try {
       const storedDataJSON = await AsyncStorage.getItem('cartItems')
       const storedData = JSON.parse(storedDataJSON)
-      if (storedDataJSON) {
-        const reduced = storedData.map((storageItem) => {
+
+      if (storedData) {
+        const reducedItems = storedData.map((storageItem) => {
           if (storageItem.key === item.key && storageItem.quantity > 0) {
             storageItem.quantity -= 1
           }
           return storageItem
         })
 
-        const updated = reduced.filter((item) => {
+        const updatedItems = reducedItems.filter((item) => {
           return item.quantity > 0
         })
 
-        await AsyncStorage.setItem('cartItems', JSON.stringify(updated))
+        await AsyncStorage.setItem('cartItems', JSON.stringify(updatedItems))
       }
     } catch (error) {
       console.log(error.message)

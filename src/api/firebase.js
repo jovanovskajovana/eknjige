@@ -43,12 +43,27 @@ class Firebase {
 
   getBooks = () => this.db.collection('books')
 
-  // getBookDetails = (uid) => this.db.doc(`books/${uid}`)
-
-  getFavoriteBooks = () =>
+  getFavoriteBooks = (booksCallback) =>
     this.getAuthState((authUser) => {
       if (authUser) {
-        this.getUser(authUser.uid).collection('favoriteBooks')
+        this.getUser(authUser.uid).onSnapshot((documentSnapshot) => {
+          documentSnapshot.ref.collection('favoriteBooks').onSnapshot((querySnapshot) => {
+            booksCallback(querySnapshot)
+          })
+        })
+      }
+    })
+
+  getPurchasedBooks = (booksCallback) =>
+    this.getAuthState((authUser) => {
+      if (authUser) {
+        this.getUser(authUser.uid).onSnapshot((documentSnapshot) => {
+          documentSnapshot.ref
+            .collection('purchasedBooks')
+            .onSnapshot((querySnapshot) => {
+              booksCallback(querySnapshot)
+            })
+        })
       }
     })
 }
