@@ -12,28 +12,23 @@ const LibraryScreen = () => {
   const [isLoading, setIsLoading] = useState(false)
 
   useEffect(() => {
-    const listener = firebase.getPurchasedBooks(
-      (querySnapshot) => {
-        const books = []
+    const listener = firebase.getPurchasedBooks((querySnapshot) => {
+      const books = []
 
-        querySnapshot.forEach((document) => {
-          document
-            .data()
-            .book.get()
-            .then((documentBook) => {
-              books.push({
-                ...documentBook.data(),
-                key: documentBook.id,
-              })
-              setBooks(books)
-              setIsLoading(false)
+      querySnapshot.forEach((document) => {
+        document
+          .data()
+          .book.get()
+          .then((documentBook) => {
+            books.push({
+              ...documentBook.data(),
+              key: documentBook.id,
             })
-        })
-      },
-      (error) => {
-        setError(error)
-      }
-    )
+            setBooks(books)
+            setIsLoading(false)
+          })
+      })
+    })
     return () => listener()
   }, [])
 

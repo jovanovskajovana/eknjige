@@ -22,24 +22,19 @@ const HomeScreen = () => {
   }, [])
 
   useEffect(() => {
-    const listener = firebase.getBooks().onSnapshot(
-      (querySnapshot) => {
-        const books = []
+    const listener = firebase.getBooks().onSnapshot((querySnapshot) => {
+      const books = []
 
-        querySnapshot.forEach((documentSnapshot) => {
-          books.push({
-            ...documentSnapshot.data(),
-            key: documentSnapshot.id,
-          })
-
-          setBooks(books)
-          setIsLoading(false)
+      querySnapshot.forEach((documentSnapshot) => {
+        books.push({
+          ...documentSnapshot.data(),
+          key: documentSnapshot.id,
         })
-      },
-      (error) => {
-        setError(error)
-      }
-    )
+
+        setBooks(books)
+        setIsLoading(false)
+      })
+    })
     return () => listener()
   }, [])
 

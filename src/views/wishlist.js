@@ -11,28 +11,32 @@ const WishlistScreen = () => {
   const [isLoading, setIsLoading] = useState(false)
 
   useEffect(() => {
-    const listener = firebase.getFavoriteBooks(
+    let listener
+    firebase.getFavoriteBooks(
       (querySnapshot) => {
         const books = []
 
-        querySnapshot.forEach((document) => {
-          document
-            .data()
-            .book.get()
-            .then((documentBook) => {
-              books.push({
-                ...documentBook.data(),
-                key: documentBook.id,
+        if (querySnapshot.empty) {
+          setBooks(books)
+        } else {
+          querySnapshot.forEach((document) => {
+            document
+              .data()
+              .book.get()
+              .then((documentBook) => {
+                books.push({
+                  ...documentBook.data(),
+                  key: documentBook.id,
+                })
+                setBooks(books)
+                setIsLoading(false)
               })
-              setBooks(books)
-              setIsLoading(false)
-            })
-        })
+          })
+        }
       },
-      (error) => {
-        setError(error)
-      }
+      (unsubcribe) => (listener = unsubcribe)
     )
+
     return () => listener()
   }, [])
 

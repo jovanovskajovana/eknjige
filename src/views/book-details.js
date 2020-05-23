@@ -10,17 +10,19 @@ const BookDetailsScreen = ({ route }) => {
   const { book } = route.params
 
   useEffect(() => {
-    const listener = firebase.getFavoriteBooks((querySnapshot) => {
-      // const currentItem = querySnapshot.find((document) => {
-      //   console.log(document.key)
-      //   document.id === book.key
-      // })
+    let listener
+    firebase.getFavoriteBooks(
+      (querySnapshot) => {
+        const favoriteDocument = querySnapshot.docs.find((document) => {
+          return document.id === book.key
+        })
 
-      querySnapshot.forEach((document) => {
-        const isFavoriteDocument = document.id === book.key
-        if (isFavoriteDocument) setIsFavorite(isFavoriteDocument)
-      })
-    })
+        if (favoriteDocument) {
+          setIsFavorite(true)
+        }
+      },
+      (unsubcribe) => (listener = unsubcribe)
+    )
 
     return () => listener()
   }, [isFavorite])
@@ -42,7 +44,7 @@ const BookDetailsScreen = ({ route }) => {
         {isFavorite ? (
           <Button title="Remove" onPress={() => removeFromWhishlist(book.key)} />
         ) : (
-          <Button title="Favorite" onPress={() => addToWhishlist(book.key)} />
+          <Button title="Add" onPress={() => addToWhishlist(book.key)} />
         )}
       </ViewLayout>
       <ViewLayout>

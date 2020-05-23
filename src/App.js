@@ -17,6 +17,7 @@ const App = () => {
       setUser(authUser)
       setIsLoading(false)
     })
+
     return () => listener()
   })
 
