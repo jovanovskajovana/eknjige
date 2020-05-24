@@ -11,7 +11,7 @@ const LibraryListItem = ({ item }) => {
     <ListItemLayout
       onPress={() => {
         navigation.navigate('Reader', {
-          book: item,
+          fileUrl: item.file_url,
         })
       }}
     >

@@ -6,6 +6,9 @@ require_relative '../node_modules/@react-native-community/cli-platform-ios/nativ
 target 'eknjige' do
   rnPrefix = "../node_modules/react-native"
 
+  # Stripe
+  pod 'Stripe', '~> 14.0.0'
+
   # React Native and its dependencies
   pod 'FBLazyVector', :path => "#{rnPrefix}/Libraries/FBLazyVector"
   pod 'FBReactNativeSpec', :path => "#{rnPrefix}/Libraries/FBReactNativeSpec"
