@@ -86,6 +86,16 @@ class Firebase {
         })
       }
     })
+
+  setPurchasedBook = (bookKey) =>
+    this.getAuthState((authUser) => {
+      if (authUser) {
+        this.getUser(authUser.uid)
+          .collection('purchasedBooks')
+          .doc(bookKey)
+          .set({ book: this.db.doc(`books/${bookKey}`) })
+      }
+    })
 }
 
 const api = new Firebase()

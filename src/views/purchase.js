@@ -1,8 +1,11 @@
 import React, { useState } from 'react'
+import AsyncStorage from '@react-native-community/async-storage'
+import { useNavigation } from '@react-navigation/native'
 import stripe from 'tipsi-stripe'
 import axios from 'axios'
 import { View, Text, StyleSheet } from 'react-native'
 
+import firebase from '../api/firebase'
 import NavigatinHeader from '../components/NavigationHeader'
 import { ScreenLayout, ViewLayout, TextLayout } from '../styles/ViewLayout'
 import Button from '../components/Button'
@@ -12,7 +15,8 @@ stripe.setOptions({
 })
 
 const PurchaseScreen = ({ route }) => {
-  const { total } = route.params
+  const navigation = useNavigation()
+  const { books, total } = route.params
   const [isLoading, setIsLoading] = useState(false)
   const [token, setToken] = useState(null)
 
@@ -56,30 +60,31 @@ const PurchaseScreen = ({ route }) => {
           currency: 'EUR',
           token: token.tokenId,
         },
-      }).then((response) => {
-        console.log(response)
+      }).then(() => {
         setIsLoading(false)
+        removeCartItems()
+        addBookToLibrary()
       })
     } catch (error) {
       console.log(error)
     }
   }
 
-  // async fetchPlatforms() {
-  //   try {
-  //     const { data } = await axios({
-  //       method: 'GET',
-  //       url: `${BASE_URL}/platforms`,
-  //       headers: {
-  //         'Content-Type': 'application/json'
-  //       }
-  //     })
+  removeCartItems = async () => {
+    try {
+      await AsyncStorage.removeItem('cartItems')
+    } catch (error) {
+      console.log(error)
+    }
+  }
 
-  //     return data
-  //   } catch (error) {
-  //     throw error
-  //   }
-  // }
+  addBookToLibrary = () => {
+    books.forEach((book) => {
+      firebase.setPurchasedBook(book.key)
+    })
+
+    navigation.navigate('Lib')
+  }
 
   return (
     <ScreenLayout>

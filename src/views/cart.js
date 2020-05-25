@@ -48,7 +48,10 @@ const CartScreen = ({ route }) => {
             <Button
               title="Purchase"
               onPress={() =>
-                navigation.navigate('Purchase', { total: calcTotalPrice(cartItems) })
+                navigation.navigate('Purchase', {
+                  total: calcTotalPrice(cartItems),
+                  books: cartItems,
+                })
               }
             />
           </ViewLayout>
