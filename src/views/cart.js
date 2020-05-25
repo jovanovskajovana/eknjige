@@ -45,7 +45,12 @@ const CartScreen = ({ route }) => {
             <TextLayout>Total: {formatMoney(calcTotalPrice(cartItems))}</TextLayout>
           </ViewLayout>
           <ViewLayout>
-            <Button title="Purchase" onPress={() => navigation.navigate('Purchase')} />
+            <Button
+              title="Purchase"
+              onPress={() =>
+                navigation.navigate('Purchase', { total: calcTotalPrice(cartItems) })
+              }
+            />
           </ViewLayout>
         </>
       ) : (
