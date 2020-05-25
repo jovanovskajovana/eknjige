@@ -23,28 +23,13 @@ const PurchaseScreen = ({ route }) => {
   const handleCardPayPress = async () => {
     try {
       setIsLoading(true)
-      const token = await stripe.paymentRequestWithCardForm({
-        // Only iOS support this options
-        smsAutofillDisabled: true,
-        requiredBillingAddressFields: 'full',
-        prefilledInformation: {
-          billingAddress: {
-            name: 'Gunilla Haugeh',
-            line1: 'Canary Place',
-            line2: '3',
-            city: 'Macon',
-            state: 'Georgia',
-            country: 'US',
-            postalCode: '31217',
-            email: 'ghaugeh0@printfriendly.com',
-          },
-        },
-      })
+      const token = await stripe.paymentRequestWithCardForm()
 
-      setIsLoading(false)
       setToken(token)
+      setIsLoading(false)
     } catch (error) {
       setIsLoading(false)
+      console.log(error)
     }
   }
 
@@ -90,7 +75,6 @@ const PurchaseScreen = ({ route }) => {
     <ScreenLayout>
       <NavigatinHeader backBtn />
       <Text style={styles.header}>Card Form Example</Text>
-      <Text style={styles.instruction}>{total}</Text>
       <Button
         text="Enter you card and pay"
         loading={isLoading}
@@ -98,10 +82,7 @@ const PurchaseScreen = ({ route }) => {
       />
       <View style={styles.token}>
         {token && (
-          <>
-            <Text style={styles.instruction}>Token: {token.tokenId}</Text>
-            <Button text="Make Payment" loading={isLoading} onPress={handlePayment} />
-          </>
+          <Button text="Make Payment" loading={isLoading} onPress={handlePayment} />
         )}
       </View>
     </ScreenLayout>
