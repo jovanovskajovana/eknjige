@@ -20,13 +20,12 @@ const CartScreen = ({ route }) => {
   const navigation = useNavigation()
   const triggerRefresh = route.params?.refresh
   const [cartItems, setCartItems] = useState([])
-  const [clearCart, setClearCart] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
   const [token, setToken] = useState(null)
 
   useEffect(() => {
     getCartItems()
-  }, [triggerRefresh, cartItems, clearCart])
+  }, [cartItems, triggerRefresh])
 
   const getCartItems = async () => {
     try {
@@ -58,7 +57,7 @@ const CartScreen = ({ route }) => {
     setIsLoading(true)
 
     try {
-      axios({
+      await axios({
         method: 'POST',
         url: 'https://us-central1-eknjige-92c0c.cloudfunctions.net/payWithStripe',
         data: {
@@ -66,11 +65,11 @@ const CartScreen = ({ route }) => {
           currency: 'EUR',
           token: token.tokenId,
         },
-      }).then(() => {
-        setIsLoading(false)
-        removeCartItems()
-        addBookToLibrary()
       })
+
+      setIsLoading(false)
+      removeCartItems()
+      addBookToLibrary()
     } catch (error) {
       console.log(error)
     }
@@ -81,7 +80,7 @@ const CartScreen = ({ route }) => {
       await AsyncStorage.removeItem('cartItems')
 
       setToken(null)
-      setClearCart(true)
+      setCartItems([])
     } catch (error) {
       console.log(error)
     }
@@ -92,7 +91,7 @@ const CartScreen = ({ route }) => {
       firebase.setPurchasedBook(item.key)
     })
 
-    // navigation.navigate('Lib')424
+    navigation.navigate('Lib')
   }
 
   return (

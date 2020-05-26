@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import AsyncStorage from '@react-native-community/async-storage'
 import { useNavigation } from '@react-navigation/native'
 import { Button } from 'react-native'
@@ -9,6 +9,7 @@ import { TextLayout } from '../styles/ViewLayout'
 
 const ListItem = ({ item }) => {
   const navigation = useNavigation()
+  const [refresh, setRefresh] = useState(false)
 
   const addToCart = async (item) => {
     let cartItems = []
@@ -40,7 +41,8 @@ const ListItem = ({ item }) => {
         await AsyncStorage.setItem('cartItems', JSON.stringify(cartItems))
       }
 
-      navigation.navigate('Cart', { refresh: true })
+      setRefresh(!refresh)
+      navigation.navigate('Cart', { refresh })
     } catch (error) {
       console.log(error.message)
     }
