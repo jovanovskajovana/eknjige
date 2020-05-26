@@ -6,8 +6,10 @@ import Loader from '../components/Loader'
 import ListItem from '../components/ListItem'
 import { ScreenLayout, ViewLayout, TextLayout } from '../styles/ViewLayout'
 import { ListLayout } from '../styles/ListLayout'
+import useLocales from '../hooks/useLocales'
 
 const HomeScreen = () => {
+  const { t } = useLocales()
   const [user, setUser] = useState(null)
   const [books, setBooks] = useState([])
   const [isLoading, setIsLoading] = useState(true)
@@ -59,7 +61,9 @@ const HomeScreen = () => {
       ) : (
         <>
           <ViewLayout>
-            <TextLayout>Hi, {user?.name}!</TextLayout>
+            <TextLayout>
+              {t('home.welcome')}, {user?.name}!
+            </TextLayout>
           </ViewLayout>
           <ListLayout
             data={books}

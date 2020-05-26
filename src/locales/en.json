@@ -1,0 +1,11 @@
+{
+  "appName": "eBooks",
+  "login": {
+    "login_button": "Login",
+    "signup_button": "Sign Up"
+  },
+  "home": {
+    "welcome": "Hi",
+    "buy": "Buy"
+  }
+}

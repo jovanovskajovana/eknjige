@@ -1,0 +1,11 @@
+{
+  "appName": "eKnjige",
+  "login": {
+    "login_button": "Login",
+    "signup_button": "Sign Up"
+  },
+  "home": {
+    "welcome": "Živjo",
+    "buy": "Kupi"
+  }
+}
