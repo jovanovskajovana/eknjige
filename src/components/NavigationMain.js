@@ -13,7 +13,6 @@ import BookDetailsScreen from '../views/book-details'
 import ReaderScreen from '../views/reader'
 import ProfileScreen from '../views/profile'
 import CartScreen from '../views/cart'
-import PurchaseScreen from '../views/purchase'
 
 const Stack = createStackNavigator()
 const Tab = createBottomTabNavigator()
@@ -35,7 +34,6 @@ const NavigationMain = ({ user }) => (
           </Stack.Screen>
           <Stack.Screen name="BookDetails" component={BookDetailsScreen} />
           <Stack.Screen name="Profile" component={ProfileScreen} />
-          <Stack.Screen name="Purchase" component={PurchaseScreen} />
           <Stack.Screen name="Reader" component={ReaderScreen} />
         </>
       ) : (
