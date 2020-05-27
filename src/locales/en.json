@@ -1,8 +1,10 @@
 {
   "appName": "eBooks",
   "login": {
-    "login_button": "Login",
-    "signup_button": "Sign Up"
+    "subtitle": "Read, learn, enjoy and share",
+    "loginButton": "Sign in and start",
+    "signupButton": "Don't have an account? Sign Up",
+    "passwordForgotButton": "Forgot password?"
   },
   "home": {
     "welcome": "Hi",

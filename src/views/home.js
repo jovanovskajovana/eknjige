@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react'
 
 import firebase from '../api/firebase'
+import useLocales from '../hooks/useLocales'
 import NavigatinHeader from '../components/NavigationHeader'
 import Loader from '../components/Loader'
 import ListItem from '../components/ListItem'
 import { ScreenLayout, ViewLayout, TextLayout } from '../styles/ViewLayout'
 import { ListLayout } from '../styles/ListLayout'
-import useLocales from '../hooks/useLocales'
 
 const HomeScreen = () => {
   const { t } = useLocales()

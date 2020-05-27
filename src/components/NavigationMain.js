@@ -5,7 +5,6 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 
 import LoginScreen from '../views/login'
 import SignUpScreen from '../views/signup'
-import PasswordResetScreen from '../views/password-reset'
 import HomeScreen from '../views/home'
 import WhishlistScreen from '../views/wishlist'
 import LibraryScreen from '../views/library'
@@ -40,7 +39,6 @@ const NavigationMain = ({ user }) => (
         <>
           <Stack.Screen name="Login" component={LoginScreen} />
           <Stack.Screen name="SignUp" component={SignUpScreen} />
-          <Stack.Screen name="PasswordReset" component={PasswordResetScreen} />
         </>
       )}
     </Stack.Navigator>
