@@ -1,8 +1,8 @@
 {
   "appName": "eKnjige",
   "login": {
-    "login_button": "Login",
-    "signup_button": "Sign Up"
+    "login_button": "Prijavi se",
+    "signup_button": "Ustvari račun"
   },
   "home": {
     "welcome": "Živjo",
