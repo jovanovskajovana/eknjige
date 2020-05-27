@@ -6,6 +6,11 @@
     "signupButton": "Don't have an account? Sign Up",
     "passwordForgotButton": "Forgot password?"
   },
+  "signup": {
+    "title": "Create your account",
+    "signupButton": "Sign Up",
+    "loginButton": "Already have an account? Login"
+  },
   "home": {
     "welcome": "Hi",
     "buy": "Buy"

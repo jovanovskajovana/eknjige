@@ -1,12 +1,16 @@
 import React, { useState } from 'react'
-import { TextInput, Button } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 import { useSafeArea } from 'react-native-safe-area-context'
 
 import firebase from '../api/firebase'
-import { ScreenLayout, TextLayout } from '../styles/ViewLayout'
+import useLocales from '../hooks/useLocales'
+import Input from '../components/Input'
+import { ScreenLayout, ViewLayout, TextLayout } from '../styles/ViewLayout'
+import { ButtonPrimary, ButtonText, ButtonLink, LinkText } from '../styles/Buttons'
+import { Title, Subtitle, ErrorMessage } from '../styles/Typography'
 
 const SignUpScreen = () => {
+  const { t } = useLocales()
   const navigation = useNavigation()
   const insets = useSafeArea()
 
@@ -27,46 +31,54 @@ const SignUpScreen = () => {
       .then(() => firebase.sendEmailVerification())
       .then(() => navigation.navigate('Home'))
       .catch((error) => {
-        if (error.code === 'auth/email-already-in-use') {
-          setErrorMessage('That email address is already in use!')
-        }
-
         if (error.code === 'auth/invalid-email') {
-          setErrorMessage('That email address is invalid!')
+          setErrorMessage('Invalid email address.')
+        } else if (error.code === 'auth/email-already-in-use') {
+          setErrorMessage('Email already in use.')
+        } else if (error.code === 'auth/network-request-failed') {
+          setErrorMessage('No internet connection!')
+        } else {
+          setErrorMessage('Incorrect credentials.')
         }
-
-        setErrorMessage(error.message)
       })
   }
 
   return (
-    <ScreenLayout paddingTop={insets.top + 20}>
-      <TextLayout>Sign Up</TextLayout>
-      {errorMessage && <TextLayout>{errorMessage}</TextLayout>}
-      <TextInput placeholder="Name" value={name} onChangeText={(text) => setName(text)} />
-      <TextInput
-        placeholder="Surname"
-        value={surname}
-        onChangeText={(text) => setSurname(text)}
-      />
-      <TextInput
-        placeholder="Email"
-        autoCapitalize="none"
-        value={email}
-        onChangeText={(text) => setEmail(text)}
-      />
-      <TextInput
-        placeholder="Password"
-        autoCapitalize="none"
-        secureTextEntry={true}
-        value={password}
-        onChangeText={(text) => setPassword(text)}
-      />
-      <Button disabled={isInvalid} title="Submit" onPress={handleSignUp} />
-      <Button
-        title="Already have an account? Login"
-        onPress={() => navigation.navigate('Login')}
-      />
+    <ScreenLayout dark paddingTop={insets.top + 20}>
+      <ViewLayout>
+        <Title alignCenter marginBottom="10px">
+          {t('appName')}
+        </Title>
+        <Subtitle alignCenter textSecondary marginBottom="40px" maxWidth="55%">
+          {t('signup.title')}
+        </Subtitle>
+        <Input placeholder="Name" value={name} handleChange={(text) => setName(text)} />
+        <Input
+          placeholder="Surname"
+          value={surname}
+          handleChange={(text) => setSurname(text)}
+        />
+        <Input
+          placeholder="Email"
+          autoCapitalize="none"
+          value={email}
+          handleChange={(text) => setEmail(text)}
+        />
+        <Input
+          placeholder="Password"
+          autoCapitalize="none"
+          secureEntry
+          value={password}
+          handleChange={(text) => setPassword(text)}
+        />
+        {errorMessage && <ErrorMessage marginLeft="10%">{errorMessage}</ErrorMessage>}
+        <ButtonPrimary maxWidth="65%" disabled={isInvalid} onPress={handleSignUp}>
+          <ButtonText>{t('signup.signupButton')}</ButtonText>
+        </ButtonPrimary>
+        <ButtonLink onPress={() => navigation.navigate('Login')}>
+          <LinkText>{t('signup.loginButton')}</LinkText>
+        </ButtonLink>
+      </ViewLayout>
     </ScreenLayout>
   )
 }

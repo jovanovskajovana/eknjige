@@ -40,7 +40,13 @@ const LoginScreen = () => {
       .resetPassword(email)
       .then(() => setErrorMessage('Check your inbox!'))
       .catch((error) => {
-        setErrorMessage(error.message)
+        if (error.code === 'auth/invalid-email') {
+          setErrorMessage('An email adress must be provided.')
+        } else if (error.code === 'auth/network-request-failed') {
+          setErrorMessage('No internet connection!')
+        } else {
+          setErrorMessage('Incorrect credentials.')
+        }
       })
   }
 
@@ -67,10 +73,10 @@ const LoginScreen = () => {
           handleChange={(text) => setPassword(text)}
         />
         {errorMessage && <ErrorMessage marginLeft="10%">{errorMessage}</ErrorMessage>}
-        <ButtonLink oonPress={handlePasswordReset}>
+        <ButtonLink onPress={handlePasswordReset}>
           <LinkText>{t('login.passwordForgotButton')}</LinkText>
         </ButtonLink>
-        <ButtonPrimary maxWidth="80%" disabled={isInvalid} onPress={handleLogin}>
+        <ButtonPrimary maxWidth="65%" disabled={isInvalid} onPress={handleLogin}>
           <ButtonText>{t('login.loginButton')}</ButtonText>
         </ButtonPrimary>
         <ButtonLink onPress={() => navigation.navigate('SignUp')}>
