@@ -15,7 +15,16 @@ const ProfileButton = styled.TouchableOpacity`
 `
 
 const BackButton = styled.TouchableOpacity`
+  flex-direction: row;
+  align-items: center;
   margin-right: auto;
 `
 
-export { HeaderLayout, ProfileButton, BackButton }
+const ButtonText = styled.Text`
+  font-size: 16px;
+  font-weight: 600;
+  color: ${(props) => props.theme.textHiglight};
+  margin-left: 15px;
+`
+
+export { HeaderLayout, ProfileButton, BackButton, ButtonText }

@@ -4,8 +4,12 @@ import { useSafeArea } from 'react-native-safe-area-context'
 
 import useLocales from '../hooks/useLocales'
 import IconBack from './icons/Back'
-import { HeaderLayout, ProfileButton, BackButton } from '../styles/HeaderLayout'
-import { LinkText } from '../styles/Buttons'
+import {
+  HeaderLayout,
+  ProfileButton,
+  BackButton,
+  ButtonText,
+} from '../styles/HeaderLayout'
 
 const NavigationHeader = ({ backBtn, profileBtn }) => {
   const { t } = useLocales()
@@ -17,7 +21,7 @@ const NavigationHeader = ({ backBtn, profileBtn }) => {
       {backBtn && (
         <BackButton onPress={() => navigation.goBack()}>
           <IconBack />
-          <LinkText textHiglight>{t('back')}</LinkText>
+          <ButtonText textHiglight>{t('back')}</ButtonText>
         </BackButton>
       )}
       {profileBtn && (
