@@ -36,17 +36,17 @@ const Greeting = styled(TextLayout)`
     props.textSecondary ? props.theme.textSecondary : props.theme.textPrimary};
 `
 
+const InfoText = styled(TextLayout)`
+  font-size: 16px;
+  font-weight: ${(props) => (props.textBold ? 600 : 500)};
+  color: ${(props) => props.theme.textInfo};
+`
+
 const Paragraph = styled(TextLayout)`
   font-size: 14px;
   font-weight: normal;
   color: ${(props) =>
     props.textSecondary ? props.theme.textSecondary : props.theme.textPrimary};
-`
-
-const InfoText = styled(TextLayout)`
-  font-size: 16px;
-  font-weight: ${(props) => (props.textBold ? 600 : 500)};
-  color: ${(props) => props.theme.textInfo};
 `
 
 const ErrorMessage = styled(TextLayout)`

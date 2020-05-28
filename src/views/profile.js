@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from 'react'
 import { Button } from 'react-native'
 
+import firebase from '../api/firebase'
 import NavigatinHeader from '../components/NavigationHeader'
 import Loader from '../components/Loader'
-import { ScreenLayout, ViewLayout, TextLayout } from '../styles/ViewLayout'
-import firebase from '../api/firebase'
+import { ScreenScrollable, ViewLayout } from '../styles/ViewLayout'
+import { Paragraph } from '../styles/Typography'
 
 const ProfileScreen = () => {
   const [user, setUser] = useState(null)
   const [isLoading, setIsLoading] = useState(true)
+  const [error, setError] = useState(false)
 
   const handleLogout = () => {
     firebase.signOut()
@@ -22,22 +24,21 @@ const ProfileScreen = () => {
     return () => listener()
   }, [])
 
+  if (isLoading) return <Loader />
+
+  if (error) return <Error />
+
   return (
-    <ScreenLayout>
+    <ScreenScrollable>
       <NavigatinHeader backBtn />
-      {isLoading ? (
-        <Loader />
-      ) : (
-        <ViewLayout>
-          <TextLayout>Profile</TextLayout>
-          <TextLayout>
-            {user?.name} {user?.surname}
-          </TextLayout>
-          <TextLayout>{user?.email}</TextLayout>
-          <Button title="Log Out" onPress={handleLogout} />
-        </ViewLayout>
-      )}
-    </ScreenLayout>
+      <ViewLayout>
+        <Paragraph>
+          {user?.name} {user?.surname}
+        </Paragraph>
+        <Paragraph>{user?.email}</Paragraph>
+        <Button title="Log Out" onPress={handleLogout} />
+      </ViewLayout>
+    </ScreenScrollable>
   )
 }
 

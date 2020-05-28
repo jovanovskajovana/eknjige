@@ -3,7 +3,8 @@ import { StyleSheet, Dimensions } from 'react-native'
 import Pdf from 'react-native-pdf'
 
 import NavigatinHeader from '../components/NavigationHeader'
-import { ScreenLayout, ViewLayout } from '../styles/ViewLayout'
+import { ReaderLayout, ScreenScrollable, ViewLayout } from '../styles/Reader'
+import { ScreenLayout } from '../styles/ListLayout'
 
 const ReaderScreen = ({ route }) => {
   const { fileUrl } = route.params

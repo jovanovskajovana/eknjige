@@ -19,13 +19,14 @@ const ListItemLayout = styled.TouchableOpacity`
   margin: 10px 0;
 `
 
-const DataWrapper = styled.View`
-  justify-content: center;
+const Wrapper = styled.View`
+  justify-content: flex-start;
+  width: ${(props) => props.width};
 `
 
 const CoverImage = styled.Image`
-  width: 80px;
-  height: 120px;
+  width: 70px;
+  height: 100px;
 `
 
 const DataText = styled(TextLayout)`
@@ -36,10 +37,22 @@ const DataText = styled(TextLayout)`
   font-weight: ${(props) => (props.title ? 600 : 500)};
 `
 
-const Button = styled.Text`
-  /* font-size: 14px; */
-  font-size: 500;
-  margin-bottom: 5px;
+const Button = styled.TouchableOpacity`
+  align-items: center;
+  justify-content: center;
+  background-color: ${(props) => props.theme.buttonPrimary};
+  border-radius: 100px;
+  width: 80%;
+  height: 30px;
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-left: auto;
 `
 
-export { ListLayout, ListItemLayout, DataWrapper, CoverImage, Button, DataText }
+const ButtonText = styled.Text`
+  font-size: 12px;
+  font-weight: 600;
+  color: ${(props) => props.theme.textLight};
+`
+
+export { ListLayout, ListItemLayout, Wrapper, CoverImage, Button, ButtonText, DataText }

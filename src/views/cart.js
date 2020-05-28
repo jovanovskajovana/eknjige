@@ -8,9 +8,10 @@ import firebase from '../api/firebase'
 import NavigatinHeader from '../components/NavigationHeader'
 import { calcTotalPrice, formatMoney } from '../utils/moneyFormatter'
 import CartListItem from '../components/CartListItem'
-import { ScreenLayout, ViewLayout, TextLayout } from '../styles/ViewLayout'
-import { ListLayout } from '../styles/ListLayout'
 import Button from '../components/Button'
+import { ScreenScrollable, ViewLayout } from '../styles/ViewLayout'
+import { Title, Greeting } from '../styles/Typography'
+import { ListLayout } from '../styles/ListLayout'
 
 stripe.setOptions({
   publishableKey: 'pk_test_dFLZyBBlEiU0nQT67AgGac5l00biQmKgzD',
@@ -20,8 +21,9 @@ const CartScreen = ({ route }) => {
   const navigation = useNavigation()
   const triggerRefresh = route.params?.refresh
   const [cartItems, setCartItems] = useState([])
-  const [isLoading, setIsLoading] = useState(false)
   const [token, setToken] = useState(null)
+  const [isLoading, setIsLoading] = useState(false)
+  const [error, setError] = useState(false)
 
   useEffect(() => {
     getCartItems()
@@ -94,35 +96,36 @@ const CartScreen = ({ route }) => {
     navigation.navigate('Lib')
   }
 
+  if (!(cartItems.length > 0))
+    return (
+      <ViewLayout>
+        <Title>No books added to cart</Title>
+      </ViewLayout>
+    )
+
+  if (error) return <Error />
+
   return (
-    <ScreenLayout>
+    <ScreenScrollable>
       <NavigatinHeader profileBtn />
-      {cartItems.length > 0 ? (
-        <>
-          <ListLayout
-            data={cartItems}
-            keyExtractor={(item) => item.key}
-            renderItem={({ item }) => <CartListItem item={item} />}
+      <ViewLayout>
+        <ListLayout
+          data={cartItems}
+          keyExtractor={(item) => item.key}
+          renderItem={({ item }) => <CartListItem item={item} />}
+        />
+        <Title>Total: {formatMoney(calcTotalPrice(cartItems))}</Title>
+        {token ? (
+          <Button text="Make Payment" loading={isLoading} onPress={handlePayment} />
+        ) : (
+          <Button
+            text="Enter you card and pay"
+            loading={isLoading}
+            onPress={handleCardPayPress}
           />
-          <ViewLayout>
-            <TextLayout>Total: {formatMoney(calcTotalPrice(cartItems))}</TextLayout>
-            {token ? (
-              <Button text="Make Payment" loading={isLoading} onPress={handlePayment} />
-            ) : (
-              <Button
-                text="Enter you card and pay"
-                loading={isLoading}
-                onPress={handleCardPayPress}
-              />
-            )}
-          </ViewLayout>
-        </>
-      ) : (
-        <ViewLayout>
-          <TextLayout>No books added to cart</TextLayout>
-        </ViewLayout>
-      )}
-    </ScreenLayout>
+        )}
+      </ViewLayout>
+    </ScreenScrollable>
   )
 }
 

@@ -3,7 +3,8 @@ import { Button } from 'react-native'
 
 import firebase from '../api/firebase'
 import NavigatinHeader from '../components/NavigationHeader'
-import { ScreenLayout, ViewLayout, TextLayout } from '../styles/ViewLayout'
+import { ScreenScrollable, ViewLayout } from '../styles/ViewLayout'
+import { Subtitle, Paragraph } from '../styles/Typography'
 
 const BookDetailsScreen = ({ route }) => {
   const [isFavorite, setIsFavorite] = useState(false)
@@ -11,6 +12,7 @@ const BookDetailsScreen = ({ route }) => {
 
   useEffect(() => {
     let listener
+
     firebase.getFavoriteBooks(
       (querySnapshot) => {
         const favoriteDocument = querySnapshot.docs.find((document) => {
@@ -23,7 +25,6 @@ const BookDetailsScreen = ({ route }) => {
       },
       (unsubcribe) => (listener = unsubcribe)
     )
-
     return () => listener()
   }, [isFavorite])
 
@@ -38,7 +39,7 @@ const BookDetailsScreen = ({ route }) => {
   }
 
   return (
-    <ScreenLayout>
+    <ScreenScrollable>
       <NavigatinHeader backBtn />
       <ViewLayout>
         {isFavorite ? (
@@ -46,13 +47,11 @@ const BookDetailsScreen = ({ route }) => {
         ) : (
           <Button title="Add" onPress={() => addToWhishlist(book.key)} />
         )}
+        <Subtitle>{book.title}</Subtitle>
+        <Paragraph>{book.author}</Paragraph>
+        <Paragraph>{book.description}</Paragraph>
       </ViewLayout>
-      <ViewLayout>
-        <TextLayout>{book.title}</TextLayout>
-        <TextLayout>{book.author}</TextLayout>
-        <TextLayout>{book.description}</TextLayout>
-      </ViewLayout>
-    </ScreenLayout>
+    </ScreenScrollable>
   )
 }
 

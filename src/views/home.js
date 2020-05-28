@@ -7,7 +7,7 @@ import Loader from '../components/Loader'
 import Error from '../components/Error'
 import ListItem from '../components/ListItem'
 import { ScreenScrollable, ViewLayout } from '../styles/ViewLayout'
-import { Title, Greeting, ErrorMessage } from '../styles/Typography'
+import { Title, Greeting } from '../styles/Typography'
 import { ListLayout } from '../styles/ListLayout'
 
 const HomeScreen = () => {
