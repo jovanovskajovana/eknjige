@@ -5,7 +5,7 @@ import { useSafeArea } from 'react-native-safe-area-context'
 import firebase from '../api/firebase'
 import useLocales from '../hooks/useLocales'
 import Input from '../components/Input'
-import { ScreenLayout, ViewLayout, TextLayout } from '../styles/ViewLayout'
+import { ScreenLayout, ViewLayout } from '../styles/ViewLayout'
 import { ButtonPrimary, ButtonText, ButtonLink, LinkText } from '../styles/Buttons'
 import { Title, Subtitle, ErrorMessage } from '../styles/Typography'
 

@@ -17,30 +17,43 @@ const TextLayout = styled.Text`
 
 const Title = styled(TextLayout)`
   font-size: 30px;
-  font-weight: 600;
+  font-weight: ${(props) => (props.textBold ? 600 : 500)};
   color: ${(props) =>
     props.textHiglight ? props.theme.textHiglight : props.theme.textLight};
 `
 
 const Subtitle = styled(TextLayout)`
   font-size: 16px;
-  font-weight: 600;
+  font-weight: ${(props) => (props.textBold ? 600 : 500)};
+  color: ${(props) =>
+    props.textSecondary ? props.theme.textSecondary : props.theme.textPrimary};
+`
+
+const Greeting = styled(TextLayout)`
+  font-size: 18px;
+  font-weight: ${(props) => (props.textBold ? 600 : 500)};
   color: ${(props) =>
     props.textSecondary ? props.theme.textSecondary : props.theme.textPrimary};
 `
 
 const Paragraph = styled(TextLayout)`
-  font-size: 30px;
+  font-size: 14px;
   font-weight: normal;
   color: ${(props) =>
     props.textSecondary ? props.theme.textSecondary : props.theme.textPrimary};
 `
 
+const InfoText = styled(TextLayout)`
+  font-size: 16px;
+  font-weight: ${(props) => (props.textBold ? 600 : 500)};
+  color: ${(props) => props.theme.textInfo};
+`
+
 const ErrorMessage = styled(TextLayout)`
   font-size: 12px;
-  font-weight: 600;
+  font-weight: ${(props) => (props.textBold ? 600 : 500)};
   color: ${(props) => props.theme.textLight};
   margin-top: -10px;
 `
 
-export { Title, Subtitle, Paragraph, ErrorMessage }
+export { TextLayout, Title, Subtitle, Greeting, Paragraph, InfoText, ErrorMessage }

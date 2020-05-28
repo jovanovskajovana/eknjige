@@ -1,11 +1,15 @@
 import React, { useState } from 'react'
 import AsyncStorage from '@react-native-community/async-storage'
 import { useNavigation } from '@react-navigation/native'
-import { Button } from 'react-native'
 
 import { formatMoney } from '../utils/moneyFormatter'
-import { ListItemLayout } from '../styles/ListLayout'
-import { TextLayout } from '../styles/ViewLayout'
+import {
+  ListItemLayout,
+  DataWrapper,
+  CoverImage,
+  DataText,
+  Button,
+} from '../styles/ListLayout'
 
 const ListItem = ({ item }) => {
   const navigation = useNavigation()
@@ -56,9 +60,16 @@ const ListItem = ({ item }) => {
         })
       }}
     >
-      <TextLayout>{item.title}</TextLayout>
-      <TextLayout>{item.author}</TextLayout>
-      <TextLayout>{formatMoney(item.price)}</TextLayout>
+      <CoverImage
+        source={{
+          uri: `${item.cover_img_url}`,
+        }}
+      />
+      <DataWrapper>
+        <DataText title>{item.title}</DataText>
+        <DataText>{item.author}</DataText>
+        <DataText>{formatMoney(item.price)}</DataText>
+      </DataWrapper>
       <Button title="Buy" onPress={() => addToCart(item)} />
     </ListItemLayout>
   )

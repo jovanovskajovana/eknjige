@@ -2,6 +2,8 @@
   "appName": "eKnjige",
   "back": "Nazaj",
   "buy": "Kupi",
+  "loading": "Nalaganje",
+  "error": "Prošlo je do napake",
   "login": {
     "subtitle": "Berete, učite se, uživajte in delite",
     "loginButton": "Prijavite se in začnite",
@@ -15,6 +17,7 @@
   },
   "home": {
     "welcome": "Živjo",
-    "buy": "Kupi"
+    "bestsellers": "Odkrijte naše uspešnice",
+    "favorites": "Priljubljene"
   }
 }

@@ -4,8 +4,10 @@ import firebase from '../api/firebase'
 import useLocales from '../hooks/useLocales'
 import NavigatinHeader from '../components/NavigationHeader'
 import Loader from '../components/Loader'
+import Error from '../components/Error'
 import ListItem from '../components/ListItem'
-import { ScreenLayout, ViewLayout, TextLayout } from '../styles/ViewLayout'
+import { ScreenScrollable, ViewLayout } from '../styles/ViewLayout'
+import { Title, Greeting, ErrorMessage } from '../styles/Typography'
 import { ListLayout } from '../styles/ListLayout'
 
 const HomeScreen = () => {
@@ -13,12 +15,11 @@ const HomeScreen = () => {
   const [user, setUser] = useState(null)
   const [books, setBooks] = useState([])
   const [isLoading, setIsLoading] = useState(true)
-  const [error, setError] = useState(true)
+  const [error, setError] = useState(false)
 
   useEffect(() => {
     const listener = firebase.getCurrentUser((authUser) => {
       setUser(authUser)
-      setIsLoading(false)
     })
     return () => listener()
   }, [])
@@ -40,39 +41,35 @@ const HomeScreen = () => {
     return () => listener()
   }, [])
 
-  // Handle states example
-  // let listToDisplay
-  // if (books === null) {
-  //   listToDisplay = <li>Loading shirts...</li>
-  // } else if (books.length === 0) {
-  //   listToDisplay = <li>No shirts found</li>
-  // } else {
-  //   listToDisplay = books.map((shirt) => {
-  //     return <li key={shirt.key}>{shirt.name}</li>
-  //   })
-  // }
-  // return <ol>{listToDisplay}</ol>
+  if (isLoading) return <Loader />
+
+  if (error) return <Error />
 
   return (
-    <ScreenLayout>
+    <ScreenScrollable>
       <NavigatinHeader profileBtn />
-      {isLoading ? (
-        <Loader />
-      ) : (
-        <>
-          <ViewLayout>
-            <TextLayout>
-              {t('home.welcome')}, {user?.name}!
-            </TextLayout>
-          </ViewLayout>
-          <ListLayout
-            data={books}
-            keyExtractor={(item) => item.key}
-            renderItem={({ item }) => <ListItem item={item} />}
-          />
-        </>
-      )}
-    </ScreenLayout>
+      <ViewLayout>
+        <Greeting marginBottom="40px" marginTop="-15px">
+          {t('home.welcome')}, {user?.name}!
+        </Greeting>
+        <Title textHiglight maxWidth="50%">
+          {t('home.bestsellers')}
+        </Title>
+        <ListLayout
+          data={books.slice(0, 3)}
+          keyExtractor={(item) => item.key}
+          renderItem={({ item }) => <ListItem item={item} />}
+        />
+        <Title textHiglight marginTop="20px">
+          {t('home.favorites')}
+        </Title>
+        <ListLayout
+          data={books.slice(3)}
+          keyExtractor={(item) => item.key}
+          renderItem={({ item }) => <ListItem item={item} />}
+        />
+      </ViewLayout>
+    </ScreenScrollable>
   )
 }
 

@@ -2,6 +2,8 @@
   "appName": "eBooks",
   "back": "Back",
   "buy": "Buy",
+  "loading": "Loading",
+  "error": "Something went wrong",
   "login": {
     "subtitle": "Read, learn, enjoy and share",
     "loginButton": "Sign in and start",
@@ -14,6 +16,8 @@
     "loginButton": "Already have an account? Login"
   },
   "home": {
-    "welcome": "Hi"
+    "welcome": "Hi",
+    "bestsellers": "Discover our bestsellers",
+    "favorites": "Favorites"
   }
 }
