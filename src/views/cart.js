@@ -77,7 +77,7 @@ const CartScreen = ({ route }) => {
     }
   }
 
-  removeCartItems = async () => {
+  const removeCartItems = async () => {
     try {
       await AsyncStorage.removeItem('cartItems')
 
@@ -88,7 +88,7 @@ const CartScreen = ({ route }) => {
     }
   }
 
-  addBookToLibrary = () => {
+  const addBookToLibrary = () => {
     cartItems.forEach((item) => {
       firebase.setPurchasedBook(item.key)
     })

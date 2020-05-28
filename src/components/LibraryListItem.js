@@ -1,8 +1,7 @@
 import React from 'react'
 import { useNavigation } from '@react-navigation/native'
 
-import { ListItemLayout } from '../styles/ListLayout'
-import { TextLayout } from '../styles/ViewLayout'
+import { ListItemLayout, Wrapper, CoverImage, DataText } from '../styles/ListLayout'
 
 const LibraryListItem = ({ item }) => {
   const navigation = useNavigation()
@@ -15,7 +14,19 @@ const LibraryListItem = ({ item }) => {
         })
       }}
     >
-      <TextLayout>{item.title}</TextLayout>
+      <Wrapper width="25%">
+        <CoverImage
+          source={{
+            uri: `${item.cover_img_url}`,
+          }}
+        />
+      </Wrapper>
+      <Wrapper width="50%">
+        <DataText title marginBottom="5px">
+          {item.title}
+        </DataText>
+        <DataText>{item.author}</DataText>
+      </Wrapper>
     </ListItemLayout>
   )
 }

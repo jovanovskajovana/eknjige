@@ -3,8 +3,7 @@ import { StyleSheet, Dimensions } from 'react-native'
 import Pdf from 'react-native-pdf'
 
 import NavigatinHeader from '../components/NavigationHeader'
-import { ReaderLayout, ScreenScrollable, ViewLayout } from '../styles/Reader'
-import { ScreenLayout } from '../styles/ListLayout'
+import { ReaderLayout, ViewLayout } from '../styles/Reader'
 
 const ReaderScreen = ({ route }) => {
   const { fileUrl } = route.params
@@ -15,38 +14,32 @@ const ReaderScreen = ({ route }) => {
   }
 
   return (
-    <ScreenLayout>
+    <ReaderLayout>
       <NavigatinHeader backBtn />
-      <ViewLayout style={styles.container}>
-        <Pdf
-          source={source}
-          onLoadComplete={(numberOfPages, filePath) => {
-            console.log(`number of pages: ${numberOfPages}`)
-          }}
-          onPageChanged={(page, numberOfPages) => {
-            console.log(`current page: ${page}`)
-          }}
-          onError={(error) => {
-            console.log(error)
-          }}
-          onPressLink={(uri) => {
-            console.log(`Link presse: ${uri}`)
-          }}
-          style={styles.pdf}
-        />
-      </ViewLayout>
-    </ScreenLayout>
+      <Pdf
+        source={source}
+        onLoadComplete={(numberOfPages, filePath) => {
+          console.log(`number of pages: ${numberOfPages}`)
+        }}
+        onPageChanged={(page, numberOfPages) => {
+          console.log(`current page: ${page}`)
+        }}
+        onError={(error) => {
+          console.log(error)
+        }}
+        onPressLink={(uri) => {
+          console.log(`Link presse: ${uri}`)
+        }}
+        style={styles.pdf}
+      />
+    </ReaderLayout>
   )
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'flex-start',
-    alignItems: 'center',
-  },
   pdf: {
-    flex: 1,
+    flex: 20,
+    marginTop: 10,
     width: Dimensions.get('window').width,
   },
 })

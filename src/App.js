@@ -12,6 +12,8 @@ const App = () => {
   const [user, setUser] = useState()
   const [isLoading, setIsLoading] = useState(true)
 
+  console.disableYellowBox = true
+
   useEffect(() => {
     const listener = firebase.getAuthState((authUser) => {
       setUser(authUser)
