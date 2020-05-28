@@ -1,5 +1,7 @@
 {
   "appName": "eBooks",
+  "back": "Back",
+  "buy": "Buy",
   "login": {
     "subtitle": "Read, learn, enjoy and share",
     "loginButton": "Sign in and start",
@@ -12,7 +14,6 @@
     "loginButton": "Already have an account? Login"
   },
   "home": {
-    "welcome": "Hi",
-    "buy": "Buy"
+    "welcome": "Hi"
   }
 }

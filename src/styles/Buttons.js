@@ -3,7 +3,7 @@ import styled from 'styled-components/native'
 const ButtonPrimary = styled.TouchableOpacity`
   background-color: ${(props) =>
     props.disabled ? props.theme.buttonDisabled : props.theme.buttonPrimary};
-  border-radius: 20px;
+  border-radius: 100px;
   margin: 10px auto;
   width: 100%;
   ${(props) => props.maxWidth && `max-width: ${props.maxWidth};`}

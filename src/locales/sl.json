@@ -1,5 +1,7 @@
 {
   "appName": "eKnjige",
+  "back": "Nazaj",
+  "buy": "Kupi",
   "login": {
     "subtitle": "Berete, učite se, uživajte in delite",
     "loginButton": "Prijavite se in začnite",

@@ -7,15 +7,14 @@ const HeaderLayout = styled.View`
 `
 
 const ProfileButton = styled.TouchableOpacity`
-  align-self: flex-end;
-  background: purple;
-  width: 50px;
-  height: 50px;
+  background: ${(props) => props.theme.profilePlaceholder};
+  width: 54px;
+  height: 54px;
   border-radius: 100px;
   margin-left: auto;
 `
 
-const BackButton = styled.Button`
+const BackButton = styled.TouchableOpacity`
   margin-right: auto;
 `
 

@@ -8,7 +8,7 @@ const Input = ({ placeholder, value, secureEntry, handleChange }) => {
   return (
     <InputLayout
       placeholder={placeholder}
-      placeholderTextColor="#bebdbd"
+      placeholderTextColor="#d6d6d6"
       autoCapitalize="none"
       secureTextEntry={secureEntry}
       value={value}
