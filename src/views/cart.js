@@ -5,12 +5,13 @@ import AsyncStorage from '@react-native-community/async-storage'
 import { useNavigation } from '@react-navigation/native'
 
 import firebase from '../api/firebase'
+import useLocales from '../hooks/useLocales'
 import NavigatinHeader from '../components/NavigationHeader'
 import { calcTotalPrice, formatMoney } from '../utils/moneyFormatter'
 import CartListItem from '../components/CartListItem'
 import Button from '../components/Button'
 import { ScreenScrollable, ViewLayout } from '../styles/ViewLayout'
-import { Title, Greeting } from '../styles/Typography'
+import { Greeting } from '../styles/Typography'
 import { ListLayout } from '../styles/ListLayout'
 
 stripe.setOptions({
@@ -18,6 +19,7 @@ stripe.setOptions({
 })
 
 const CartScreen = ({ route }) => {
+  const { t } = useLocales()
   const navigation = useNavigation()
   const triggerRefresh = route.params?.refresh
   const [cartItems, setCartItems] = useState([])
@@ -99,7 +101,9 @@ const CartScreen = ({ route }) => {
   if (!(cartItems.length > 0))
     return (
       <ViewLayout>
-        <Title>No books added to cart</Title>
+        <Greeting marginLeft="auto" marginRight="auto">
+          No books added to cart
+        </Greeting>
       </ViewLayout>
     )
 
@@ -114,12 +118,14 @@ const CartScreen = ({ route }) => {
           keyExtractor={(item) => item.key}
           renderItem={({ item }) => <CartListItem item={item} />}
         />
-        <Title>Total: {formatMoney(calcTotalPrice(cartItems))}</Title>
+        <Greeting marginLeft="auto" marginBottom="50px">
+          {t('cart.total')}: {formatMoney(calcTotalPrice(cartItems))}
+        </Greeting>
         {token ? (
-          <Button text="Make Payment" loading={isLoading} onPress={handlePayment} />
+          <Button text={t('cart.pay')} loading={isLoading} onPress={handlePayment} />
         ) : (
           <Button
-            text="Enter you card and pay"
+            text={t('cart.purchase')}
             loading={isLoading}
             onPress={handleCardPayPress}
           />

@@ -19,5 +19,10 @@
     "welcome": "Hi",
     "bestsellers": "Discover our bestsellers",
     "favorites": "Favorites"
+  },
+  "cart": {
+    "total": "Total",
+    "purchase": "Purchase",
+    "pay": "Pay"
   }
 }

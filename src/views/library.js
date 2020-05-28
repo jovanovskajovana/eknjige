@@ -6,7 +6,7 @@ import Loader from '../components/Loader'
 import Error from '../components/Error'
 import LibraryListItem from '../components/LibraryListItem'
 import { ScreenScrollable, ViewLayout } from '../styles/ViewLayout'
-import { Paragraph } from '../styles/Typography'
+import { Greeting } from '../styles/Typography'
 import { ListLayout } from '../styles/ListLayout'
 
 const LibraryScreen = () => {
@@ -42,7 +42,9 @@ const LibraryScreen = () => {
   if (!(books.length > 0))
     return (
       <ViewLayout>
-        <Paragraph>No books purchased yet</Paragraph>
+        <Greeting marginLeft="auto" marginRight="auto">
+          No books purchased yet
+        </Greeting>
       </ViewLayout>
     )
 

@@ -39,7 +39,7 @@ const ReaderScreen = ({ route }) => {
 const styles = StyleSheet.create({
   pdf: {
     flex: 20,
-    marginTop: 10,
+    marginTop: 20,
     width: Dimensions.get('window').width,
   },
 })

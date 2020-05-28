@@ -31,4 +31,9 @@ const LinkText = styled.Text`
   text-align: center;
 `
 
-export { ButtonPrimary, ButtonText, ButtonLink, LinkText }
+const ButtonRemove = styled.TouchableOpacity`
+  margin-left: auto;
+  margin-bottom: auto;
+`
+
+export { ButtonPrimary, ButtonText, ButtonLink, LinkText, ButtonRemove }

@@ -5,7 +5,7 @@ import firebase from '../api/firebase'
 import NavigatinHeader from '../components/NavigationHeader'
 import Loader from '../components/Loader'
 import { ScreenScrollable, ViewLayout } from '../styles/ViewLayout'
-import { Paragraph } from '../styles/Typography'
+import { Greeting } from '../styles/Typography'
 
 const ProfileScreen = () => {
   const [user, setUser] = useState(null)
@@ -32,10 +32,12 @@ const ProfileScreen = () => {
     <ScreenScrollable>
       <NavigatinHeader backBtn />
       <ViewLayout>
-        <Paragraph>
+        <Greeting marginLeft="auto" marginRight="auto">
           {user?.name} {user?.surname}
-        </Paragraph>
-        <Paragraph>{user?.email}</Paragraph>
+        </Greeting>
+        <Greeting marginLeft="auto" marginRight="auto">
+          {user?.email}
+        </Greeting>
         <Button title="Log Out" onPress={handleLogout} />
       </ViewLayout>
     </ScreenScrollable>

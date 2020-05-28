@@ -5,7 +5,7 @@ import NavigatinHeader from '../components/NavigationHeader'
 import ListItem from '../components/ListItem'
 import { ScreenScrollable, ViewLayout } from '../styles/ViewLayout'
 import { ListLayout } from '../styles/ListLayout'
-import { Paragraph } from '../styles/Typography'
+import { Greeting } from '../styles/Typography'
 
 const WishlistScreen = () => {
   const [books, setBooks] = useState([])
@@ -49,7 +49,9 @@ const WishlistScreen = () => {
   if (!(books.length > 0))
     return (
       <ViewLayout>
-        <Paragraph>No favorite books added</Paragraph>
+        <Greeting marginLeft="auto" marginRight="auto">
+          No favorite books added
+        </Greeting>
       </ViewLayout>
     )
 

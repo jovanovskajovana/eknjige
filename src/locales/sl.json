@@ -19,5 +19,10 @@
     "welcome": "Živjo",
     "bestsellers": "Odkrijte naše uspešnice",
     "favorites": "Priljubljene"
+  },
+  "cart": {
+    "total": "Skupaj",
+    "purchase": "Na blagajno",
+    "pay": "Plačaj"
   }
 }
