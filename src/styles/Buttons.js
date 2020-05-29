@@ -33,7 +33,8 @@ const LinkText = styled.Text`
 
 const ButtonRemove = styled.TouchableOpacity`
   margin-left: auto;
-  margin-bottom: auto;
+  height: 30px;
+  width: 25px;
 `
 
 export { ButtonPrimary, ButtonText, ButtonLink, LinkText, ButtonRemove }
