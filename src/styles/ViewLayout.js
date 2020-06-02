@@ -24,6 +24,7 @@ const ViewLayout = styled.View`
   flex: 1;
   width: 100%;
   margin: auto;
+  justify-content: center;
 `
 
 const ViewSolidLayout = styled.View`

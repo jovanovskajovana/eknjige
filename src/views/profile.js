@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from 'react'
-import { Button } from 'react-native'
 
 import firebase from '../api/firebase'
+import useLocales from '../hooks/useLocales'
 import NavigatinHeader from '../components/NavigationHeader'
 import Loader from '../components/Loader'
-import { ScreenScrollable, ViewLayout } from '../styles/ViewLayout'
+import { ScreenScrollable, ViewSolidLayout } from '../styles/ViewLayout'
+import { ButtonLink, LinkText } from '../styles/Buttons'
 import { Greeting } from '../styles/Typography'
 
 const ProfileScreen = () => {
+  const { t } = useLocales()
   const [user, setUser] = useState(null)
   const [isLoading, setIsLoading] = useState(true)
   const [error, setError] = useState(false)
@@ -31,15 +33,17 @@ const ProfileScreen = () => {
   return (
     <ScreenScrollable>
       <NavigatinHeader backBtn />
-      <ViewLayout>
+      <ViewSolidLayout>
         <Greeting marginLeft="auto" marginRight="auto">
           {user?.name} {user?.surname}
         </Greeting>
         <Greeting marginLeft="auto" marginRight="auto">
           {user?.email}
         </Greeting>
-        <Button title="Log Out" onPress={handleLogout} />
-      </ViewLayout>
+        <ButtonLink onPress={handleLogout}>
+          <LinkText>{t('profile.logout')}</LinkText>
+        </ButtonLink>
+      </ViewSolidLayout>
     </ScreenScrollable>
   )
 }

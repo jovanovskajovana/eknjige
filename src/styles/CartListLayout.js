@@ -26,7 +26,7 @@ const PriceWrapper = styled.View`
   margin-top: auto;
   margin-left: auto;
   flex-direction: row;
-  align-items: flex-end;
+  align-items: ${(props) => (props.alignCenter ? 'center' : 'flex-end')};
 `
 
 const Border = styled.View`
@@ -52,15 +52,21 @@ const PriceBig = styled(TextLayout)`
   font-size: 20px;
   font-weight: normal;
   color: ${(props) => (props.title ? props.theme.textPrimary : props.theme.textInfo)};
-  font-weight: ${(props) => (props.title ? 600 : 500)};
+  font-weight: 500;
 `
 
 const PriceSmall = styled(TextLayout)`
   font-size: 16px;
   font-weight: normal;
-  line-height: 18px;
   color: ${(props) => (props.title ? props.theme.textPrimary : props.theme.textInfo)};
-  font-weight: ${(props) => (props.title ? 600 : 500)};
+  font-weight: 500;
+`
+
+const PriceSum = styled(TextLayout)`
+  font-size: 24px;
+  font-weight: normal;
+  color: ${(props) => (props.title ? props.theme.textPrimary : props.theme.textInfo)};
+  font-weight: 500;
 `
 
 export {
@@ -73,4 +79,5 @@ export {
   DataText,
   PriceBig,
   PriceSmall,
+  PriceSum,
 }

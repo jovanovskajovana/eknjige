@@ -12,7 +12,7 @@ import CartListItem from '../components/CartListItem'
 import Button from '../components/Button'
 import { ScreenScrollable, ViewLayout, ViewSolidLayout } from '../styles/ViewLayout'
 import { Greeting } from '../styles/Typography'
-import { ListLayout } from '../styles/ListLayout'
+import { ListLayout, PriceWrapper, PriceSmall, PriceSum } from '../styles/CartListLayout'
 
 stripe.setOptions({
   publishableKey: 'pk_test_dFLZyBBlEiU0nQT67AgGac5l00biQmKgzD',
@@ -119,9 +119,14 @@ const CartScreen = ({ route }) => {
           keyExtractor={(item) => item.key}
           renderItem={({ item }) => <CartListItem item={item} />}
         />
-        <Greeting marginLeft="auto" marginBottom="50px">
-          {t('cart.total')}: {formatMoney(calcTotalPrice(cartItems))}
-        </Greeting>
+        <PriceWrapper alignCenter>
+          <PriceSmall marginTop="20px" marginBottom="60px">
+            {t('cart.total')}:{' '}
+          </PriceSmall>
+          <PriceSum marginTop="20px" marginBottom="60px">
+            {formatMoney(calcTotalPrice(cartItems))}
+          </PriceSum>
+        </PriceWrapper>
         {token ? (
           <Button text={t('cart.pay')} loading={isLoading} onPress={handlePayment} />
         ) : (
