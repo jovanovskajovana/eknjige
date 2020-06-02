@@ -31,6 +31,20 @@
   "cart": {
     "total": "Skupaj",
     "purchase": "Na blagajno",
-    "pay": "Plačaj"
+    "pay": "Plačaj",
+    "noBooks": "Ni dodanih knjig v košarico"
+  },
+  "whishlist": {
+    "title": "Vaš seznam želja",
+    "noBooks": "Ni dodanih knjig na seznam želja"
+  },
+  "library": {
+    "title": "Vaša knjižnica",
+    "noBooks": "Ni dodanih knjig v knjižnici"
+  },
+  "bookDetails": {
+    "description": "Opis",
+    "raiting": "Ocena",
+    "comments": "Komentarji"
   }
 }

@@ -131,14 +131,14 @@ const BookDetailsScreen = ({ route }) => {
 
         <SectionWrapper>
           <DataTitle title marginBottom="20px">
-            Description
+            {t('bookDetails.description')}
           </DataTitle>
           <DataText>{book.description}</DataText>
         </SectionWrapper>
 
         <SectionWrapper>
           <DataTitle title marginBottom="20px">
-            Raiting
+            {t('bookDetails.raiting')}
           </DataTitle>
           <Wrapper width="100%" flexRow>
             <IconStar />

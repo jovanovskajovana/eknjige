@@ -1,15 +1,17 @@
 import React, { useState, useEffect } from 'react'
 
 import firebase from '../api/firebase'
+import useLocales from '../hooks/useLocales'
 import NavigatinHeader from '../components/NavigationHeader'
 import Loader from '../components/Loader'
 import Error from '../components/Error'
 import LibraryListItem from '../components/LibraryListItem'
 import { ScreenScrollable, ViewLayout } from '../styles/ViewLayout'
-import { Greeting } from '../styles/Typography'
+import { Title, Greeting } from '../styles/Typography'
 import { ListLayout } from '../styles/ListLayout'
 
 const LibraryScreen = () => {
+  const { t } = useLocales()
   const [books, setBooks] = useState([])
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState(false)
@@ -41,16 +43,22 @@ const LibraryScreen = () => {
 
   if (!(books.length > 0))
     return (
-      <ViewLayout>
-        <Greeting marginLeft="auto" marginRight="auto">
-          No books purchased yet
-        </Greeting>
-      </ViewLayout>
+      <ScreenScrollable>
+        <NavigatinHeader profileBtn />
+        <ViewLayout>
+          <Greeting marginLeft="auto" marginRight="auto">
+            {t('library.noBooks')}
+          </Greeting>
+        </ViewLayout>
+      </ScreenScrollable>
     )
 
   return (
     <ScreenScrollable>
       <NavigatinHeader profileBtn />
+      <Title textHiglight maxWidth="100%" marginTop="46px">
+        {t('library.title')}
+      </Title>
       <ViewLayout>
         <ListLayout
           data={books}

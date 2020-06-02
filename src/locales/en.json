@@ -31,6 +31,20 @@
   "cart": {
     "total": "Total",
     "purchase": "Purchase",
-    "pay": "Pay"
+    "pay": "Pay",
+    "noBooks": "No books added to cart"
+  },
+  "whishlist": {
+    "title": "Your wishlist",
+    "noBooks": "No books added to wishlist"
+  },
+  "library": {
+    "title": "Your library",
+    "noBooks": "No books added in library"
+  },
+  "bookDetails": {
+    "description": "Description",
+    "raiting": "Raiting",
+    "comments": "Comments"
   }
 }

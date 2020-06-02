@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from 'react'
 
 import firebase from '../api/firebase'
+import useLocales from '../hooks/useLocales'
 import NavigatinHeader from '../components/NavigationHeader'
 import ListItem from '../components/ListItem'
 import { ScreenScrollable, ViewLayout } from '../styles/ViewLayout'
 import { ListLayout } from '../styles/ListLayout'
-import { Greeting } from '../styles/Typography'
+import { Title, Greeting } from '../styles/Typography'
 
 const WishlistScreen = () => {
+  const { t } = useLocales()
   const [books, setBooks] = useState([])
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState(false)
@@ -48,16 +50,22 @@ const WishlistScreen = () => {
 
   if (!(books.length > 0))
     return (
-      <ViewLayout>
-        <Greeting marginLeft="auto" marginRight="auto">
-          No favorite books added
-        </Greeting>
-      </ViewLayout>
+      <ScreenScrollable>
+        <NavigatinHeader profileBtn />
+        <ViewLayout>
+          <Greeting marginLeft="auto" marginRight="auto">
+            {t('whishlist.noBooks')}
+          </Greeting>
+        </ViewLayout>
+      </ScreenScrollable>
     )
 
   return (
     <ScreenScrollable>
       <NavigatinHeader profileBtn />
+      <Title textHiglight maxWidth="50%" marginTop="46px">
+        {t('whishlist.title')}
+      </Title>
       <ListLayout
         data={books}
         keyExtractor={(item) => item.key}
