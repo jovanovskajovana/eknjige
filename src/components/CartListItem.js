@@ -2,9 +2,17 @@ import React from 'react'
 import AsyncStorage from '@react-native-community/async-storage'
 
 import { formatMoney } from '../utils/moneyFormatter'
-import { ListItemLayout, Wrapper, CoverImage, DataText } from '../styles/CartListLayout'
-import { ButtonRemove, LinkText } from '../styles/Buttons'
-import { Greeting } from '../styles/Typography'
+import {
+  ListItemLayout,
+  Wrapper,
+  PriceWrapper,
+  Border,
+  CoverImage,
+  DataText,
+  PriceBig,
+  PriceSmall,
+} from '../styles/CartListLayout'
+import { ButtonRemove, RemoveText } from '../styles/Buttons'
 
 const CartListItem = ({ item }) => {
   const handleRemove = async (item) => {
@@ -32,35 +40,43 @@ const CartListItem = ({ item }) => {
   }
 
   return (
-    <ListItemLayout
-      onPress={() => {
-        navigation.navigate('BookDetails', {
-          book: item,
-        })
-      }}
-    >
-      <Wrapper width="25%">
-        <CoverImage
-          source={{
-            uri: `${item.cover_img_url}`,
-          }}
-        />
-      </Wrapper>
-      <Wrapper width="50%">
-        <DataText title marginBottom="5px">
-          {item.title}
-        </DataText>
-        <DataText>{item.author}</DataText>
-      </Wrapper>
-      <Wrapper width="25%">
-        <ButtonRemove onPress={() => handleRemove(item)}>
-          <LinkText>X</LinkText>
-        </ButtonRemove>
-        <Greeting marginLeft="auto" marginTop="auto">
-          {item.quantity} x {formatMoney(item.price)}
-        </Greeting>
-      </Wrapper>
-    </ListItemLayout>
+    <>
+      <ListItemLayout
+        onPress={() => {
+          navigation.navigate('BookDetails', {
+            book: item,
+          })
+        }}
+      >
+        <Wrapper width="27%">
+          <CoverImage
+            source={{
+              uri: `${item.cover_img_url}`,
+            }}
+          />
+        </Wrapper>
+        <Wrapper width="73%">
+          <Wrapper flexRow width="100%">
+            <Wrapper width="70%">
+              <DataText title marginBottom="5px">
+                {item.title}
+              </DataText>
+              <DataText>{item.author}</DataText>
+            </Wrapper>
+            <Wrapper width="30%">
+              <ButtonRemove onPress={() => handleRemove(item)}>
+                <RemoveText>X</RemoveText>
+              </ButtonRemove>
+            </Wrapper>
+          </Wrapper>
+          <PriceWrapper>
+            <PriceSmall>{item.quantity} x </PriceSmall>
+            <PriceBig>{formatMoney(item.price)}</PriceBig>
+          </PriceWrapper>
+        </Wrapper>
+      </ListItemLayout>
+      <Border />
+    </>
   )
 }
 

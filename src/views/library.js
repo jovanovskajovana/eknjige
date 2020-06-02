@@ -8,7 +8,7 @@ import Error from '../components/Error'
 import LibraryListItem from '../components/LibraryListItem'
 import { ScreenScrollable, ViewLayout } from '../styles/ViewLayout'
 import { Title, Greeting } from '../styles/Typography'
-import { ListLayout } from '../styles/ListLayout'
+import { ListLayout } from '../styles/LibraryListLayout'
 
 const LibraryScreen = () => {
   const { t } = useLocales()

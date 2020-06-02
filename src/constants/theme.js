@@ -10,6 +10,7 @@ const theme = {
   buttonPrimary: '#a19bf8',
   buttonDisabled: '#8982f2',
   profilePlaceholder: '#cdd2fb',
+  listSeparator: '#f1f1f1',
 }
 
 export default theme
