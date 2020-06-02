@@ -2,7 +2,7 @@ import React from 'react'
 import AsyncStorage from '@react-native-community/async-storage'
 
 import { formatMoney } from '../utils/moneyFormatter'
-import { ListItemLayout, Wrapper, CoverImage, DataText } from '../styles/ListLayout'
+import { ListItemLayout, Wrapper, CoverImage, DataText } from '../styles/CartListLayout'
 import { ButtonRemove, LinkText } from '../styles/Buttons'
 import { Greeting } from '../styles/Typography'
 

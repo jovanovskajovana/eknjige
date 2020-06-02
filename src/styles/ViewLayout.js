@@ -25,10 +25,17 @@ const ViewLayout = styled.View`
   margin: auto;
 `
 
+const ViewSolidLayout = styled.View`
+  width: 100%;
+  background-color: ${(props) => props.theme.backgroundLight};
+  margin-top: 40px;
+  padding: 30px 20px;
+`
+
 const TextLayout = styled.Text`
   font-size: 20px;
   font-weight: normal;
   color: ${(props) => props.theme.textPrimary};
 `
 
-export { ScreenLayout, ScreenScrollable, ViewLayout, TextLayout }
+export { ScreenLayout, ScreenScrollable, ViewLayout, ViewSolidLayout, TextLayout }

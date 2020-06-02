@@ -12,10 +12,8 @@ const ListLayout = styled.FlatList`
 
 const ListItemLayout = styled.TouchableOpacity`
   flex-direction: row;
-  background: ${(props) => props.theme.backgroundLight};
   border-radius: 4px;
   width: 100%;
-  padding: 20px;
   margin: 10px 0;
 `
 

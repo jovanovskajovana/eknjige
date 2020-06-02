@@ -10,7 +10,7 @@ import NavigatinHeader from '../components/NavigationHeader'
 import { calcTotalPrice, formatMoney } from '../utils/moneyFormatter'
 import CartListItem from '../components/CartListItem'
 import Button from '../components/Button'
-import { ScreenScrollable, ViewLayout } from '../styles/ViewLayout'
+import { ScreenScrollable, ViewSolidLayout } from '../styles/ViewLayout'
 import { Greeting } from '../styles/Typography'
 import { ListLayout } from '../styles/ListLayout'
 
@@ -100,11 +100,11 @@ const CartScreen = ({ route }) => {
 
   if (!(cartItems.length > 0))
     return (
-      <ViewLayout>
+      <ViewSolidLayout>
         <Greeting marginLeft="auto" marginRight="auto">
           No books added to cart
         </Greeting>
-      </ViewLayout>
+      </ViewSolidLayout>
     )
 
   if (error) return <Error />
@@ -112,7 +112,7 @@ const CartScreen = ({ route }) => {
   return (
     <ScreenScrollable>
       <NavigatinHeader profileBtn />
-      <ViewLayout>
+      <ViewSolidLayout>
         <ListLayout
           data={cartItems}
           keyExtractor={(item) => item.key}
@@ -130,7 +130,7 @@ const CartScreen = ({ route }) => {
             onPress={handleCardPayPress}
           />
         )}
-      </ViewLayout>
+      </ViewSolidLayout>
     </ScreenScrollable>
   )
 }

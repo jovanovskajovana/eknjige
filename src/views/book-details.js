@@ -5,7 +5,7 @@ import useLocales from '../hooks/useLocales'
 import firebase from '../api/firebase'
 import IconFav from '../components/icons/Fav'
 import NavigatinHeader from '../components/NavigationHeader'
-import { ScreenScrollable, ViewLayout } from '../styles/ViewLayout'
+import { ScreenScrollable, ViewSolidLayout } from '../styles/ViewLayout'
 import { ButtonLink, ButtonText } from '../styles/Buttons'
 import { Wrapper, CoverImage, DataText } from '../styles/ListLayout'
 
@@ -45,9 +45,9 @@ const BookDetailsScreen = ({ route }) => {
   return (
     <ScreenScrollable>
       <NavigatinHeader backBtn />
-      <ViewLayout>
+      <ViewSolidLayout>
         <Wrapper width="100%">
-          <View style={{ flexDirection: 'row', paddingTop: 60 }}>
+          <View>
             <CoverImage
               source={{
                 uri: `${book.cover_img_url}`,
@@ -67,7 +67,7 @@ const BookDetailsScreen = ({ route }) => {
           </View>
         </Wrapper>
         <Wrapper width="100%">
-          <View style={{ paddingTop: 30 }}>
+          <View>
             <DataText title marginBottom="5px">
               {book.title}
             </DataText>
@@ -75,7 +75,7 @@ const BookDetailsScreen = ({ route }) => {
             <DataText>{book.description}</DataText>
           </View>
         </Wrapper>
-      </ViewLayout>
+      </ViewSolidLayout>
     </ScreenScrollable>
   )
 }
