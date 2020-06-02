@@ -20,6 +20,7 @@ const HomeScreen = () => {
   useEffect(() => {
     const listener = firebase.getCurrentUser((authUser) => {
       setUser(authUser)
+      if (isLoading) setIsLoading(false)
     })
     return () => listener()
   }, [])
@@ -35,7 +36,7 @@ const HomeScreen = () => {
         })
 
         setBooks(books)
-        setIsLoading(false)
+        if (isLoading) setIsLoading(false)
       })
     })
     return () => listener()

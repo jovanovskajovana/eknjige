@@ -9,7 +9,7 @@ const Error = () => {
   return (
     <ScreenLayout>
       <ViewLayout>
-        <InfoText alignCenter>{t('error')}</InfoText>
+        <InfoText alignCenter>{t('errorMessages.somethingWentWrong')}</InfoText>
       </ViewLayout>
     </ScreenLayout>
   )

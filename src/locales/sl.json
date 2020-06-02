@@ -3,7 +3,15 @@
   "back": "Nazaj",
   "buy": "Kupi",
   "loading": "Nalaganje",
-  "error": "Prošlo je do napake",
+  "errorMessages": {
+    "somethingWentWrong": "Prošlo je do napake",
+    "invalidEmail": "Nepravilen e-naslov.",
+    "noInternetConnection": "Ni internetne povezave!",
+    "incorrectCredentials": "Nepraviln e-naslov in geslo.",
+    "emailMustBeProvided": "Navedite e-naslov.",
+    "emailInUse": "E-naslov je že v uporabi.",
+    "checkInbox": "Preverite nabiralnik!"
+  },
   "login": {
     "subtitle": "Berete, učite se, uživajte in delite",
     "loginButton": "Prijavite se in začnite",

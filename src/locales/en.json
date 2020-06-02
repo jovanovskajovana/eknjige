@@ -3,7 +3,15 @@
   "back": "Back",
   "buy": "Buy",
   "loading": "Loading",
-  "error": "Something went wrong",
+  "errorMessagess": {
+    "somethingWentWrong": "Something went wrong",
+    "invalidEmail": "Invalid email address.",
+    "noInternetConnection": "No internet connection!",
+    "incorrectCredentials": "Incorrect credentials.",
+    "emailMustBeProvided": "An email address must be provided.",
+    "emailInUse": "Email already in use.",
+    "checkInbox": "Check your inbox!"
+  },
   "login": {
     "subtitle": "Read, learn, enjoy and share",
     "loginButton": "Sign in and start",

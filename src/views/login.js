@@ -26,11 +26,11 @@ const LoginScreen = () => {
       .then(() => navigation.navigate('Home'))
       .catch((error) => {
         if (error.code === 'auth/invalid-email') {
-          setErrorMessage('Invalid email address.')
+          setErrorMessage(`${t('errorMessages.invalidEmail')}`)
         } else if (error.code === 'auth/network-request-failed') {
-          setErrorMessage('No internet connection!')
+          setErrorMessage(`${t('errorMessages.noInternetConnection')}`)
         } else {
-          setErrorMessage('Incorrect credentials.')
+          setErrorMessage(`${t('errorMessages.incorrectCredentials')}`)
         }
       })
   }
@@ -38,14 +38,14 @@ const LoginScreen = () => {
   const handlePasswordReset = () => {
     firebase
       .resetPassword(email)
-      .then(() => setErrorMessage('Check your inbox!'))
+      .then(() => setErrorMessage(`${t('errorMessages.checkInbox')}`))
       .catch((error) => {
         if (error.code === 'auth/invalid-email') {
-          setErrorMessage('An email adress must be provided.')
+          setErrorMessage(`${t('errorMessages.emailMustBeProvided')}`)
         } else if (error.code === 'auth/network-request-failed') {
-          setErrorMessage('No internet connection!')
+          setErrorMessage(`${t('errorMessages.noInternetConnection')}`)
         } else {
-          setErrorMessage('Incorrect credentials.')
+          setErrorMessage(`${t('errorMessages.incorrectCredentials')}`)
         }
       })
   }

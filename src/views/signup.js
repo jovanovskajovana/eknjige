@@ -32,13 +32,13 @@ const SignUpScreen = () => {
       .then(() => navigation.navigate('Home'))
       .catch((error) => {
         if (error.code === 'auth/invalid-email') {
-          setErrorMessage('Invalid email address.')
+          setErrorMessage(`${t('errorMessages.invalidEmail')}`)
         } else if (error.code === 'auth/email-already-in-use') {
-          setErrorMessage('Email already in use.')
+          setErrorMessage(`${t('errorMessages.emailInUse')}`)
         } else if (error.code === 'auth/network-request-failed') {
-          setErrorMessage('No internet connection!')
+          setErrorMessage(`${t('errorMessages.noInternetConnection')}`)
         } else {
-          setErrorMessage('Incorrect credentials.')
+          setErrorMessage(`${t('errorMessages.incorrectCredentials')}`)
         }
       })
   }
