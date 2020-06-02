@@ -46,7 +46,7 @@ const NavigationMain = ({ user }) => (
                   showLabel: false,
                   activeTintColor: '#a19bf8',
                   inactiveTintColor: '#cacaca',
-                  style: { height: 90, paddingTop: 20, borderTopColor: '#fff' },
+                  style: { height: 85, paddingTop: 20, borderTopColor: '#fff' },
                 }}
               >
                 <Tab.Screen name="Home" component={HomeScreen} />
