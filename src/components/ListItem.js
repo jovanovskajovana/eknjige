@@ -63,21 +63,21 @@ const ListItem = ({ item }) => {
         })
       }}
     >
-      <Wrapper width="25%">
+      <Wrapper width="27%">
         <CoverImage
           source={{
             uri: `${item.cover_img_url}`,
           }}
         />
       </Wrapper>
-      <Wrapper width="50%">
+      <Wrapper width="49%">
         <DataText title marginBottom="5px">
           {item.title}
         </DataText>
         <DataText>{item.author}</DataText>
         <DataText>{formatMoney(item.price)}</DataText>
       </Wrapper>
-      <Wrapper width="25%">
+      <Wrapper width="24%">
         <Button onPress={() => addToCart(item)}>
           <ButtonText>{t('buy')}</ButtonText>
         </Button>

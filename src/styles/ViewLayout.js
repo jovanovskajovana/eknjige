@@ -21,15 +21,18 @@ const ScreenScrollable = styled.ScrollView`
 `
 
 const ViewLayout = styled.View`
+  flex: 1;
   width: 100%;
   margin: auto;
 `
 
 const ViewSolidLayout = styled.View`
+  flex: 1;
   width: 100%;
   background-color: ${(props) => props.theme.backgroundLight};
-  margin-top: 40px;
-  padding: 30px 20px;
+  border-radius: 4px;
+  margin-top: 30px;
+  padding: 35px 25px;
 `
 
 const TextLayout = styled.Text`
