@@ -26,7 +26,7 @@ const LinkText = styled.Text`
   font-size: 14px;
   font-weight: 600;
   color: ${(props) =>
-    props.textHiglight ? props.theme.textHiglight : props.theme.textSecondary};
+    props.textHiglight ? props.theme.textHiglight : props.theme.textPale};
   padding: 15px;
   text-align: center;
 `

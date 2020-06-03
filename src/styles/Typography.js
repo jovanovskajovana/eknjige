@@ -25,8 +25,7 @@ const Title = styled(TextLayout)`
 const Subtitle = styled(TextLayout)`
   font-size: 16px;
   font-weight: ${(props) => (props.textBold ? 600 : 500)};
-  color: ${(props) =>
-    props.textSecondary ? props.theme.textSecondary : props.theme.textPrimary};
+  color: ${(props) => (props.textPale ? props.theme.textPale : props.theme.textPrimary)};
 `
 
 const Greeting = styled(TextLayout)`

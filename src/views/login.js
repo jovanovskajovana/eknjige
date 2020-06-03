@@ -56,17 +56,17 @@ const LoginScreen = () => {
         <Title alignCenter marginBottom="10px">
           {t('appName')}
         </Title>
-        <Subtitle alignCenter textSecondary marginBottom="40px" maxWidth="55%">
+        <Subtitle alignCenter textPale marginBottom="40px" maxWidth="55%">
           {t('login.subtitle')}
         </Subtitle>
         <Input
-          placeholder="Email"
+          placeholder={t('signup.email')}
           autoCapitalize="none"
           value={email}
           handleChange={(text) => setEmail(text)}
         />
         <Input
-          placeholder="Password"
+          placeholder={t('signup.password')}
           autoCapitalize="none"
           secureEntry
           value={password}

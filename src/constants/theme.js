@@ -5,6 +5,7 @@ const theme = {
   textPrimary: '#121212',
   textSecondary: '#bebdbd',
   textLight: '#fff',
+  textPale: '#cecece',
   textHiglight: '#6860da',
   textInfo: '#8a8a8a',
   buttonPrimary: '#a19bf8',

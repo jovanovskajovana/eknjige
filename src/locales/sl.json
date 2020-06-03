@@ -16,12 +16,18 @@
     "subtitle": "Berete, učite se, uživajte in delite",
     "loginButton": "Prijavite se in začnite",
     "signupButton": "Nimate računa? Ustvarite",
-    "passwordForgotButton": "Ste pozabili geslo?"
+    "passwordForgotButton": "Ste pozabili geslo?",
+    "email": "E-naslov",
+    "password": "Geslo"
   },
   "signup": {
     "title": "Ustvarite svojega računa",
     "signupButton": "Prijavite se",
-    "loginButton": "Že imate račun? Vpišite se"
+    "loginButton": "Že imate račun? Vpišite se",
+    "name": "Ime",
+    "surname": "Priimek",
+    "email": "E-naslov",
+    "password": "Geslo"
   },
   "home": {
     "welcome": "Živjo",

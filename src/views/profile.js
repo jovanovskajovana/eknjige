@@ -41,7 +41,7 @@ const ProfileScreen = () => {
           {user?.email}
         </Greeting>
         <ButtonLink onPress={handleLogout}>
-          <LinkText>{t('profile.logout')}</LinkText>
+          <LinkText textHiglight>{t('profile.logout')}</LinkText>
         </ButtonLink>
       </ViewSolidLayout>
     </ScreenScrollable>
