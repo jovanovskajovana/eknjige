@@ -2,7 +2,7 @@ import React from 'react'
 import { View } from 'react-native'
 import Svg, { Path } from 'react-native-svg'
 
-const Fav = ({ fill }) => (
+const Fav = ({ fill = '#bab9b9' }) => (
   <View>
     <Svg width="30" height="28" viewBox="0 0 30 28" fill="none">
       <Path

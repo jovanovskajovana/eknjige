@@ -1,12 +1,16 @@
 import React, { useState, useEffect } from 'react'
+import { Dimensions } from 'react-native'
 
 import firebase from '../api/firebase'
 import useLocales from '../hooks/useLocales'
 import NavigatinHeader from '../components/NavigationHeader'
+import IconFav from '../components/icons/Fav'
 import ListItem from '../components/ListItem'
-import { ScreenScrollable, ViewLayout } from '../styles/ViewLayout'
+import { ScreenScrollable, ViewLayout, IconWrapper } from '../styles/ViewLayout'
 import { ListLayout } from '../styles/ListLayout'
-import { Title, Greeting } from '../styles/Typography'
+import { Title, InfoText } from '../styles/Typography'
+
+const screenHeight = Dimensions.get('window').height
 
 const WishlistScreen = () => {
   const { t } = useLocales()
@@ -52,10 +56,13 @@ const WishlistScreen = () => {
     return (
       <ScreenScrollable>
         <NavigatinHeader profileBtn />
-        <ViewLayout>
-          <Greeting marginLeft="auto" marginRight="auto">
+        <ViewLayout style={{ minHeight: screenHeight - 220 }}>
+          <IconWrapper>
+            <IconFav />
+          </IconWrapper>
+          <InfoText marginLeft="auto" marginRight="auto">
             {t('whishlist.noBooks')}
-          </Greeting>
+          </InfoText>
         </ViewLayout>
       </ScreenScrollable>
     )

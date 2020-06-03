@@ -8,11 +8,17 @@ import { useNavigation } from '@react-navigation/native'
 import firebase from '../api/firebase'
 import useLocales from '../hooks/useLocales'
 import NavigatinHeader from '../components/NavigationHeader'
+import IconCart from '../components/icons/Cart'
 import { calcTotalPrice, formatMoney } from '../utils/moneyFormatter'
 import CartListItem from '../components/CartListItem'
 import { Button, ButtonConfirm } from '../components/Button'
-import { ScreenScrollable, ViewSolidLayout } from '../styles/ViewLayout'
-import { Greeting } from '../styles/Typography'
+import {
+  ScreenScrollable,
+  ViewLayout,
+  ViewSolidLayout,
+  IconWrapper,
+} from '../styles/ViewLayout'
+import { InfoText } from '../styles/Typography'
 import {
   ListLayout,
   Wrapper,
@@ -111,9 +117,14 @@ const CartScreen = ({ route }) => {
     return (
       <ScreenScrollable>
         <NavigatinHeader profileBtn />
-        <Greeting marginLeft="auto" marginRight="auto">
-          {t('cart.noBooks')}
-        </Greeting>
+        <ViewLayout style={{ minHeight: screenHeight - 220 }}>
+          <IconWrapper>
+            <IconCart />
+          </IconWrapper>
+          <InfoText marginLeft="auto" marginRight="auto">
+            {t('cart.noBooks')}
+          </InfoText>
+        </ViewLayout>
       </ScreenScrollable>
     )
 

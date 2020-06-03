@@ -43,4 +43,20 @@ const Border = styled.View`
   margin: 15px 0px;
 `
 
-export { ScreenLayout, ScreenScrollable, ViewLayout, ViewSolidLayout, Border }
+const IconWrapper = styled.View`
+  justify-content: center;
+  align-items: center;
+  width: 60px;
+  height: 60px;
+  border-radius: 100px;
+  margin: 0 auto;
+`
+
+export {
+  ScreenLayout,
+  ScreenScrollable,
+  ViewLayout,
+  ViewSolidLayout,
+  Border,
+  IconWrapper,
+}
