@@ -6,6 +6,7 @@
   "errorMessagess": {
     "somethingWentWrong": "Something went wrong",
     "invalidEmail": "Invalid email address.",
+    "userNotFound": "User not found.",
     "noInternetConnection": "No internet connection!",
     "incorrectCredentials": "Incorrect credentials.",
     "emailMustBeProvided": "An email address must be provided.",

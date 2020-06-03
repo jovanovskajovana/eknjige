@@ -29,6 +29,8 @@ const LoginScreen = () => {
           setErrorMessage(`${t('errorMessages.invalidEmail')}`)
         } else if (error.code === 'auth/network-request-failed') {
           setErrorMessage(`${t('errorMessages.noInternetConnection')}`)
+        } else if (error.code === 'auth/user-not-found') {
+          setErrorMessage(`${t('errorMessages.userNotFound')}`)
         } else {
           setErrorMessage(`${t('errorMessages.incorrectCredentials')}`)
         }

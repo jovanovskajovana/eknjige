@@ -6,6 +6,7 @@
   "errorMessages": {
     "somethingWentWrong": "Prošlo je do napake",
     "invalidEmail": "Nepravilen e-naslov.",
+    "userNotFound": "Uporabnik ne obstaja.",
     "noInternetConnection": "Ni internetne povezave!",
     "incorrectCredentials": "Nepraviln e-naslov in geslo.",
     "emailMustBeProvided": "Navedite e-naslov.",
