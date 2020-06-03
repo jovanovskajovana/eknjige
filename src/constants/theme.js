@@ -9,6 +9,7 @@ const theme = {
   textHiglight: '#6860da',
   textInfo: '#8a8a8a',
   buttonPrimary: '#a19bf8',
+  buttonSuccess: '#82aa97',
   buttonBack: '#837bee',
   buttonDisabled: '#8982f2',
   profilePlaceholder: '#cdd2fb',

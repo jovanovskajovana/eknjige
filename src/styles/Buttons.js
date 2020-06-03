@@ -4,8 +4,17 @@ const ButtonPrimary = styled.TouchableOpacity`
   background-color: ${(props) =>
     props.disabled ? props.theme.buttonDisabled : props.theme.buttonPrimary};
   border-radius: 100px;
-  margin: 10px auto;
   width: 100%;
+  margin: 10px auto;
+  ${(props) => props.maxWidth && `max-width: ${props.maxWidth};`}
+`
+
+const ButtonSuccess = styled.TouchableOpacity`
+  background-color: ${(props) => props.theme.buttonSuccess};
+  border-radius: 100px;
+  width: 100%;
+  min-height: 40px;
+  margin: 10px auto;
   ${(props) => props.maxWidth && `max-width: ${props.maxWidth};`}
 `
 
@@ -40,4 +49,12 @@ const RemoveText = styled.Text`
   padding: 0;
 `
 
-export { ButtonPrimary, ButtonText, ButtonLink, LinkText, ButtonRemove, RemoveText }
+export {
+  ButtonPrimary,
+  ButtonSuccess,
+  ButtonText,
+  ButtonLink,
+  LinkText,
+  ButtonRemove,
+  RemoveText,
+}

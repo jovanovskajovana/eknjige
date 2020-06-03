@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { Dimensions } from 'react-native'
 import AsyncStorage from '@react-native-community/async-storage'
 import { useNavigation } from '@react-navigation/native'
 
@@ -20,6 +21,8 @@ import {
   Button,
   ButtonText,
 } from '../styles/DetailsLayout'
+
+const screenHeight = Dimensions.get('window').height
 
 const BookDetailsScreen = ({ route }) => {
   const { t } = useLocales()
@@ -96,7 +99,7 @@ const BookDetailsScreen = ({ route }) => {
   return (
     <ScreenScrollable>
       <NavigatinHeader backBtn />
-      <ViewSolidLayout>
+      <ViewSolidLayout style={{ minHeight: screenHeight }}>
         <CoverWrapper>
           <Wrapper width="40%">
             <CoverImage

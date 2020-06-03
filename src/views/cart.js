@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { Dimensions } from 'react-native'
 import stripe from 'tipsi-stripe'
 import axios from 'axios'
 import AsyncStorage from '@react-native-community/async-storage'
@@ -9,14 +10,22 @@ import useLocales from '../hooks/useLocales'
 import NavigatinHeader from '../components/NavigationHeader'
 import { calcTotalPrice, formatMoney } from '../utils/moneyFormatter'
 import CartListItem from '../components/CartListItem'
-import Button from '../components/Button'
+import { Button, ButtonConfirm } from '../components/Button'
 import { ScreenScrollable, ViewSolidLayout } from '../styles/ViewLayout'
 import { Greeting } from '../styles/Typography'
-import { ListLayout, PriceWrapper, PriceSmall, PriceSum } from '../styles/CartListLayout'
+import {
+  ListLayout,
+  Wrapper,
+  PriceWrapper,
+  PriceSmall,
+  PriceSum,
+} from '../styles/CartListLayout'
 
 stripe.setOptions({
   publishableKey: 'pk_test_dFLZyBBlEiU0nQT67AgGac5l00biQmKgzD',
 })
+
+const screenHeight = Dimensions.get('window').height
 
 const CartScreen = ({ route }) => {
   const { t } = useLocales()
@@ -113,29 +122,37 @@ const CartScreen = ({ route }) => {
   return (
     <ScreenScrollable>
       <NavigatinHeader profileBtn />
-      <ViewSolidLayout>
-        <ListLayout
-          data={cartItems}
-          keyExtractor={(item) => item.key}
-          renderItem={({ item }) => <CartListItem item={item} />}
-        />
-        <PriceWrapper alignCenter>
-          <PriceSmall marginTop="20px" marginBottom="60px" marginRight="5px">
-            {t('cart.total')}:{' '}
-          </PriceSmall>
-          <PriceSum marginTop="20px" marginBottom="60px">
-            {formatMoney(calcTotalPrice(cartItems))}
-          </PriceSum>
-        </PriceWrapper>
-        {token ? (
-          <Button text={t('cart.pay')} loading={isLoading} onPress={handlePayment} />
-        ) : (
-          <Button
-            text={t('cart.purchase')}
-            loading={isLoading}
-            onPress={handleCardPayPress}
+      <ViewSolidLayout style={{ minHeight: screenHeight }}>
+        <Wrapper width="100%">
+          <ListLayout
+            data={cartItems}
+            keyExtractor={(item) => item.key}
+            renderItem={({ item }) => <CartListItem item={item} />}
           />
-        )}
+
+          <PriceWrapper alignCenter>
+            <PriceSmall marginTop="20px" marginBottom="60px" marginRight="5px">
+              {t('cart.total')}:{' '}
+            </PriceSmall>
+            <PriceSum marginTop="20px" marginBottom="60px">
+              {formatMoney(calcTotalPrice(cartItems))}
+            </PriceSum>
+          </PriceWrapper>
+
+          {token ? (
+            <ButtonConfirm
+              text={t('cart.pay')}
+              loading={isLoading}
+              onPress={handlePayment}
+            />
+          ) : (
+            <Button
+              text={t('cart.purchase')}
+              loading={isLoading}
+              onPress={handleCardPayPress}
+            />
+          )}
+        </Wrapper>
       </ViewSolidLayout>
     </ScreenScrollable>
   )

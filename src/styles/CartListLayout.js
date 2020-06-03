@@ -5,7 +5,6 @@ import { TextLayout } from './Typography'
 const ListLayout = styled.FlatList`
   flex: 1;
   width: 100%;
-  height: 100%;
   margin-bottom: 20px;
 `
 

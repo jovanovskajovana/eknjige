@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { Dimensions } from 'react-native'
 
 import firebase from '../api/firebase'
 import useLocales from '../hooks/useLocales'
@@ -7,6 +8,8 @@ import Loader from '../components/Loader'
 import { ScreenScrollable, ViewSolidLayout } from '../styles/ViewLayout'
 import { ButtonLink, LinkText } from '../styles/Buttons'
 import { Greeting } from '../styles/Typography'
+
+const screenHeight = Dimensions.get('window').height
 
 const ProfileScreen = () => {
   const { t } = useLocales()
@@ -33,7 +36,7 @@ const ProfileScreen = () => {
   return (
     <ScreenScrollable>
       <NavigatinHeader backBtn />
-      <ViewSolidLayout>
+      <ViewSolidLayout style={{ minHeight: screenHeight }}>
         <Greeting marginLeft="auto" marginRight="auto">
           {user?.name} {user?.surname}
         </Greeting>

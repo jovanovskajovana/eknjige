@@ -11,7 +11,7 @@ const ScreenLayout = styled.View`
 `
 
 const ScreenScrollable = styled.ScrollView`
-  flex: 1;
+  flex-grow: 1;
   background: ${(props) =>
     props.dark ? props.theme.backgroundDark : props.theme.backgroundPrimary};
   width: 100%;
