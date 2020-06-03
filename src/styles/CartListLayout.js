@@ -29,13 +29,6 @@ const PriceWrapper = styled.View`
   align-items: ${(props) => (props.alignCenter ? 'center' : 'flex-end')};
 `
 
-const Border = styled.View`
-  height: 1px;
-  width: 100%;
-  background: ${(props) => props.theme.listSeparator};
-  margin: 15px 0px;
-`
-
 const CoverImage = styled.Image`
   width: 70px;
   height: 100px;
@@ -44,28 +37,32 @@ const CoverImage = styled.Image`
 const DataText = styled(TextLayout)`
   font-size: 14px;
   font-weight: normal;
-  color: ${(props) => (props.title ? props.theme.textPrimary : props.theme.textInfo)};
+  color: ${(props) =>
+    props.title ? props.theme.textPrimary : props.theme.textSecondary};
   font-weight: ${(props) => (props.title ? 600 : 500)};
 `
 
 const PriceBig = styled(TextLayout)`
   font-size: 20px;
   font-weight: normal;
-  color: ${(props) => (props.title ? props.theme.textPrimary : props.theme.textInfo)};
+  color: ${(props) =>
+    props.title ? props.theme.textPrimary : props.theme.textSecondary};
   font-weight: 500;
 `
 
 const PriceSmall = styled(TextLayout)`
   font-size: 16px;
   font-weight: normal;
-  color: ${(props) => (props.title ? props.theme.textPrimary : props.theme.textInfo)};
+  color: ${(props) =>
+    props.title ? props.theme.textPrimary : props.theme.textSecondary};
   font-weight: 500;
 `
 
 const PriceSum = styled(TextLayout)`
   font-size: 24px;
   font-weight: normal;
-  color: ${(props) => (props.title ? props.theme.textPrimary : props.theme.textInfo)};
+  color: ${(props) =>
+    props.title ? props.theme.textPrimary : props.theme.textSecondary};
   font-weight: 500;
 `
 
@@ -74,7 +71,6 @@ export {
   ListItemLayout,
   Wrapper,
   PriceWrapper,
-  Border,
   CoverImage,
   DataText,
   PriceBig,

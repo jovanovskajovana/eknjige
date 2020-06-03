@@ -10,7 +10,7 @@ import NavigatinHeader from '../components/NavigationHeader'
 import { calcTotalPrice, formatMoney } from '../utils/moneyFormatter'
 import CartListItem from '../components/CartListItem'
 import Button from '../components/Button'
-import { ScreenScrollable, ViewLayout, ViewSolidLayout } from '../styles/ViewLayout'
+import { ScreenScrollable, ViewSolidLayout } from '../styles/ViewLayout'
 import { Greeting } from '../styles/Typography'
 import { ListLayout, PriceWrapper, PriceSmall, PriceSum } from '../styles/CartListLayout'
 

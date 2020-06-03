@@ -36,10 +36,11 @@ const ViewSolidLayout = styled.View`
   padding: 35px 25px;
 `
 
-const TextLayout = styled.Text`
-  font-size: 20px;
-  font-weight: normal;
-  color: ${(props) => props.theme.textPrimary};
+const Border = styled.View`
+  height: 1px;
+  width: 100%;
+  background: ${(props) => props.theme.listSeparator};
+  margin: 15px 0px;
 `
 
-export { ScreenLayout, ScreenScrollable, ViewLayout, ViewSolidLayout, TextLayout }
+export { ScreenLayout, ScreenScrollable, ViewLayout, ViewSolidLayout, Border }

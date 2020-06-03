@@ -7,7 +7,7 @@ import firebase from '../api/firebase'
 import IconFav from '../components/icons/Fav'
 import IconStar from '../components/icons/Star'
 import NavigatinHeader from '../components/NavigationHeader'
-import { ScreenScrollable, ViewSolidLayout } from '../styles/ViewLayout'
+import { ScreenScrollable, ViewSolidLayout, Border } from '../styles/ViewLayout'
 import { ButtonLink } from '../styles/Buttons'
 import {
   CoverWrapper,
@@ -130,14 +130,14 @@ const BookDetailsScreen = ({ route }) => {
         </CoverWrapper>
 
         <SectionWrapper>
-          <DataTitle title marginBottom="20px">
+          <DataTitle title marginBottom="10px">
             {t('bookDetails.description')}
           </DataTitle>
           <DataText>{book.description}</DataText>
         </SectionWrapper>
 
         <SectionWrapper>
-          <DataTitle title marginBottom="20px">
+          <DataTitle title marginBottom="10px">
             {t('bookDetails.raiting')}
           </DataTitle>
           <Wrapper width="100%" flexRow>
@@ -150,6 +150,14 @@ const BookDetailsScreen = ({ route }) => {
           <Raiting title marginTop="5px">
             4.5
           </Raiting>
+        </SectionWrapper>
+
+        <SectionWrapper>
+          <DataTitle title marginBottom="10px">
+            {t('bookDetails.comments')}
+          </DataTitle>
+          <Border />
+          <DataText>{t('bookDetails.noComments')}</DataText>
         </SectionWrapper>
       </ViewSolidLayout>
     </ScreenScrollable>

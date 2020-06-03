@@ -24,7 +24,7 @@ const BackButton = styled.TouchableOpacity`
 const ButtonText = styled.Text`
   font-size: 16px;
   font-weight: 600;
-  color: ${(props) => props.theme.textHiglight};
+  color: ${(props) => props.theme.buttonBack};
   margin-left: 15px;
 `
 

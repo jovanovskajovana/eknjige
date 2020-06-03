@@ -51,7 +51,8 @@
   "bookDetails": {
     "description": "Opis",
     "raiting": "Ocena",
-    "comments": "Komentarji"
+    "comments": "Komentarji",
+    "noComments": "Ni komentarjev."
   },
   "profile": {
     "logout": "Odjava"

@@ -51,7 +51,8 @@
   "bookDetails": {
     "description": "Description",
     "raiting": "Raiting",
-    "comments": "Comments"
+    "comments": "Comments",
+    "noComments": "No comments"
   },
   "profile": {
     "logout": "Log Out"

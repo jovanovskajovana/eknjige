@@ -2,7 +2,7 @@ import React from 'react'
 import { View } from 'react-native'
 import Svg, { Path } from 'react-native-svg'
 
-const Back = ({ fill = '#6860da' }) => (
+const Back = ({ fill = '#837bee' }) => (
   <Svg
     width="12"
     height="20"

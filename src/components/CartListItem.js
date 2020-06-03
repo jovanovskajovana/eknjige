@@ -2,11 +2,11 @@ import React from 'react'
 import AsyncStorage from '@react-native-community/async-storage'
 
 import { formatMoney } from '../utils/moneyFormatter'
+import { Border } from '../styles/ViewLayout'
 import {
   ListItemLayout,
   Wrapper,
   PriceWrapper,
-  Border,
   CoverImage,
   DataText,
   PriceBig,
@@ -41,13 +41,7 @@ const CartListItem = ({ item }) => {
 
   return (
     <>
-      <ListItemLayout
-        onPress={() => {
-          navigation.navigate('BookDetails', {
-            book: item,
-          })
-        }}
-      >
+      <ListItemLayout>
         <Wrapper width="27%">
           <CoverImage
             source={{

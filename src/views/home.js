@@ -50,7 +50,7 @@ const HomeScreen = () => {
     <ScreenScrollable>
       <NavigatinHeader profileBtn />
       <ViewLayout>
-        <Greeting marginBottom="40px" marginTop="-15px">
+        <Greeting textBold marginBottom="40px" marginTop="-15px">
           {t('home.welcome')}, {user?.name}!
         </Greeting>
         <Title textHiglight maxWidth="50%">

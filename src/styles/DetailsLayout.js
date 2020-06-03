@@ -27,7 +27,8 @@ const DataText = styled(TextLayout)`
   font-size: 14px;
   font-weight: normal;
   line-height: 18px;
-  color: ${(props) => (props.title ? props.theme.textPrimary : props.theme.textInfo)};
+  color: ${(props) =>
+    props.title ? props.theme.textPrimary : props.theme.textSecondary};
   font-weight: ${(props) => (props.title ? 600 : 500)};
 `
 
@@ -35,7 +36,8 @@ const DataTitle = styled(TextLayout)`
   font-size: 16px;
   font-weight: normal;
   line-height: 18px;
-  color: ${(props) => (props.title ? props.theme.textPrimary : props.theme.textInfo)};
+  color: ${(props) =>
+    props.title ? props.theme.textPrimary : props.theme.textSecondary};
   font-weight: ${(props) => (props.title ? 600 : 500)};
 `
 
@@ -51,7 +53,7 @@ const Button = styled.TouchableOpacity`
   justify-content: center;
   background-color: ${(props) => props.theme.buttonPrimary};
   border-radius: 100px;
-  width: 70%;
+  width: 60%;
   height: 30px;
   margin-top: auto;
   margin-bottom: 20px;
