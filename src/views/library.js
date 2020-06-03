@@ -7,8 +7,8 @@ import Loader from '../components/Loader'
 import Error from '../components/Error'
 import LibraryListItem from '../components/LibraryListItem'
 import { ScreenScrollable, ViewLayout } from '../styles/ViewLayout'
-import { Title, Greeting } from '../styles/Typography'
 import { ListLayout } from '../styles/LibraryListLayout'
+import { Title, Greeting } from '../styles/Typography'
 
 const LibraryScreen = () => {
   const { t } = useLocales()
@@ -59,13 +59,13 @@ const LibraryScreen = () => {
       <Title textHiglight maxWidth="100%" marginTop="46px">
         {t('library.title')}
       </Title>
-      <ViewLayout>
-        <ListLayout
-          data={books}
-          keyExtractor={(item) => item.key}
-          renderItem={({ item }) => <LibraryListItem item={item} />}
-        />
-      </ViewLayout>
+      <ListLayout
+        data={books}
+        keyExtractor={(item) => item.key}
+        numColumns={2}
+        horizontal={false}
+        renderItem={({ item }) => <LibraryListItem item={item} />}
+      />
     </ScreenScrollable>
   )
 }
