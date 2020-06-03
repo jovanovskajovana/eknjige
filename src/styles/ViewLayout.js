@@ -1,5 +1,13 @@
 import styled from 'styled-components/native'
 
+const ViewPositions = styled.View`
+  ${(props) => props.marginTop && `margin-top: ${props.marginTop};`}
+  ${(props) => props.marginRight && `margin-right: ${props.marginRight};`}
+  ${(props) => props.marginBottom && `margin-bottom: ${props.marginBottom};`}
+  ${(props) => props.marginLeft && `margin-left: ${props.marginLeft};`}
+  ${(props) => props.maxWidth && `max-width: ${props.maxWidth};`}
+`
+
 const ScreenLayout = styled.View`
   flex: 1;
   background: ${(props) =>
@@ -36,6 +44,12 @@ const ViewSolidLayout = styled.View`
   padding: 35px 25px;
 `
 
+const Wrapper = styled(ViewPositions)`
+  flex-direction: ${(props) => (props.flexRow ? 'row' : 'column')};
+  justify-content: flex-start;
+  width: ${(props) => props.width};
+`
+
 const Border = styled.View`
   height: 1px;
   width: 100%;
@@ -57,6 +71,7 @@ export {
   ScreenScrollable,
   ViewLayout,
   ViewSolidLayout,
+  Wrapper,
   Border,
   IconWrapper,
 }

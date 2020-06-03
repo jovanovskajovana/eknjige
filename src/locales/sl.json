@@ -55,6 +55,11 @@
     "noComments": "Ni komentarjev."
   },
   "profile": {
-    "logout": "Odjava"
+    "logout": "Odjava",
+    "save": "Shrani",
+    "updateData": "Posodobi podatke",
+    "books": "Knjige",
+    "read": "Prebrani",
+    "favorites": "Priljubljeni"
   }
 }

@@ -55,6 +55,11 @@
     "noComments": "No comments"
   },
   "profile": {
-    "logout": "Log Out"
+    "logout": "Log Out",
+    "save": "Save",
+    "updateData": "Update data",
+    "books": "Books",
+    "read": "Read",
+    "favorites": "Favorites"
   }
 }

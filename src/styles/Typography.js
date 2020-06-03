@@ -43,7 +43,7 @@ const InfoText = styled(TextLayout)`
 
 const Paragraph = styled(TextLayout)`
   font-size: 14px;
-  font-weight: normal;
+  font-weight: ${(props) => (props.textBold ? 600 : 500)};
   color: ${(props) =>
     props.textSecondary ? props.theme.textSecondary : props.theme.textPrimary};
 `
@@ -51,8 +51,23 @@ const Paragraph = styled(TextLayout)`
 const ErrorMessage = styled(TextLayout)`
   font-size: 12px;
   font-weight: ${(props) => (props.textBold ? 600 : 500)};
-  color: ${(props) => props.theme.textLight};
+  color: ${(props) => (props.textDatk ? props.theme.textPrimary : props.theme.textLight)};
   margin-top: -10px;
 `
 
-export { TextLayout, Title, Subtitle, Greeting, Paragraph, InfoText, ErrorMessage }
+const Numbers = styled(TextLayout)`
+  font-size: 30px;
+  font-weight: ${(props) => (props.textBold ? 600 : 500)};
+  color: ${(props) => props.theme.textPrimary};
+`
+
+export {
+  TextLayout,
+  Title,
+  Subtitle,
+  Greeting,
+  Paragraph,
+  InfoText,
+  ErrorMessage,
+  Numbers,
+}

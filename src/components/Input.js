@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 
 import InputLayout from '../styles/Inputs'
 
-const Input = ({ placeholder, value, secureEntry, handleChange }) => {
+const Input = ({ placeholder, value, secureEntry, fullWidth, handleChange }) => {
   const [isFocused, setIsFocused] = useState(false)
 
   return (
@@ -12,6 +12,7 @@ const Input = ({ placeholder, value, secureEntry, handleChange }) => {
       autoCapitalize="none"
       secureTextEntry={secureEntry}
       value={value}
+      width={fullWidth}
       borderFocused={isFocused}
       selectionColor="#fff"
       onFocus={() => setIsFocused(true)}
