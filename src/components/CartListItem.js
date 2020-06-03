@@ -2,6 +2,7 @@ import React from 'react'
 import AsyncStorage from '@react-native-community/async-storage'
 
 import { formatMoney } from '../utils/moneyFormatter'
+import IconClose from '../components/icons/Close'
 import { Border } from '../styles/ViewLayout'
 import {
   ListItemLayout,
@@ -59,7 +60,9 @@ const CartListItem = ({ item }) => {
             </Wrapper>
             <Wrapper width="30%">
               <ButtonRemove onPress={() => handleRemove(item)}>
-                <RemoveText>X</RemoveText>
+                <RemoveText>
+                  <IconClose />
+                </RemoveText>
               </ButtonRemove>
             </Wrapper>
           </Wrapper>

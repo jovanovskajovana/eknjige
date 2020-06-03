@@ -30,11 +30,10 @@ const CoverImage = styled.Image`
 
 const DataText = styled(TextLayout)`
   font-size: 14px;
-  font-weight: normal;
+  font-weight: ${(props) => (props.title ? 600 : 500)};
   line-height: 18px;
   color: ${(props) =>
     props.title ? props.theme.textPrimary : props.theme.textSecondary};
-  font-weight: ${(props) => (props.title ? 600 : 500)};
 `
 
 const Button = styled.TouchableOpacity`

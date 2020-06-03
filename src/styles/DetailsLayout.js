@@ -25,27 +25,24 @@ const CoverImage = styled.Image`
 
 const DataText = styled(TextLayout)`
   font-size: 14px;
-  font-weight: normal;
+  font-weight: ${(props) => (props.title ? 600 : 500)};
   line-height: 18px;
   color: ${(props) =>
     props.title ? props.theme.textPrimary : props.theme.textSecondary};
-  font-weight: ${(props) => (props.title ? 600 : 500)};
 `
 
 const DataTitle = styled(TextLayout)`
   font-size: 16px;
-  font-weight: normal;
+  font-weight: ${(props) => (props.title ? 600 : 500)};
   line-height: 18px;
   color: ${(props) =>
     props.title ? props.theme.textPrimary : props.theme.textSecondary};
-  font-weight: ${(props) => (props.title ? 600 : 500)};
 `
 
 const Raiting = styled(TextLayout)`
   font-size: 26px;
-  font-weight: normal;
-  color: ${(props) => props.theme.textPrimary};
   font-weight: 600;
+  color: ${(props) => props.theme.textPrimary};
 `
 
 const Button = styled.TouchableOpacity`

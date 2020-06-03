@@ -120,7 +120,7 @@ const CartScreen = ({ route }) => {
           renderItem={({ item }) => <CartListItem item={item} />}
         />
         <PriceWrapper alignCenter>
-          <PriceSmall marginTop="20px" marginBottom="60px">
+          <PriceSmall marginTop="20px" marginBottom="60px" marginRight="5px">
             {t('cart.total')}:{' '}
           </PriceSmall>
           <PriceSum marginTop="20px" marginBottom="60px">

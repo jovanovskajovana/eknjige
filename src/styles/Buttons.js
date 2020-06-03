@@ -33,16 +33,11 @@ const LinkText = styled.Text`
 
 const ButtonRemove = styled.TouchableOpacity`
   margin-left: auto;
-  height: 30px;
-  width: 25px;
+  padding-top: 5px;
 `
 
 const RemoveText = styled.Text`
-  font-size: 18px;
-  font-weight: 600;
-  color: ${(props) =>
-    props.textHiglight ? props.theme.textHiglight : props.theme.textSecondary};
-  text-align: center;
+  padding: 0;
 `
 
 export { ButtonPrimary, ButtonText, ButtonLink, LinkText, ButtonRemove, RemoveText }
